@@ -33,7 +33,7 @@ class TestSpiralVaseBase:
     def test_no_cutouts(self, openscad_runner):
         vars = openscad_runner.parameters
         vars["type"] = 1 # Create a Base
-        vars["enable_holes"] = False
+        vars["enable_snap_cutouts"] = False
         openscad_runner.create_image([], Path('no_cutouts_bottom.png'))
         openscad_runner.camera_arguments = openscad_runner.camera_arguments.with_rotation(CameraRotations.Top)
         openscad_runner.create_image([], Path('no_cutouts_top.png'))
@@ -41,7 +41,7 @@ class TestSpiralVaseBase:
     def test_with_cutouts(self, openscad_runner):
         vars = openscad_runner.parameters
         vars["type"] = 1 # Create a Base
-        vars["enable_holes"] = True
+        vars["enable_snap_cutouts"] = True
         openscad_runner.create_image([], Path('with_cutouts_bottom.png'))
         openscad_runner.camera_arguments = openscad_runner.camera_arguments.with_rotation(CameraRotations.Top)
         openscad_runner.create_image([], Path('with_cutouts_top.png'))

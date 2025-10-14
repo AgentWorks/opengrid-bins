@@ -44,7 +44,7 @@ n_divx = 2;
 
 /* [Toggles] */
 // toggle snap cutouts on the base (Note: may not be practical for vase mode)
-enable_holes = false;
+enable_snap_cutouts = false;
 // round up the bin height to match the closest 7mm unit
 enable_zsnap = false;
 // toggle the lip on the top of the bin that allows stacking
@@ -191,7 +191,7 @@ module gridfinityBaseVase(wall_thickness, bottom_thickness) {
                     translate([-wall_thickness/2, 3, 0])
                     cube([wall_thickness, l_grid, BASE_PROFILE_HEIGHT]);
 
-                    if (enable_holes) {
+                    if (enable_snap_cutouts) {
                         block_magnet_blank(wall_thickness);
                     }
                 }
@@ -203,7 +203,7 @@ module gridfinityBaseVase(wall_thickness, bottom_thickness) {
                 profile_x(0.1);
             }
         }
-        if (enable_holes) {
+        if (enable_snap_cutouts) {
             pattern_circular(4)
             block_magnet_blank(0, false);
         }

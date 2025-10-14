@@ -47,7 +47,7 @@ gridy | { n>0 \| n∈R } | number of bases along the y-axis
 gridz | { n>0 \| n∈R } | bin height. See bin height information and <br> "gridz_define" below.
 length | { n>0 \| n∈R } | length of one unit of the base. <br> default: 42 (The Answer to the Ultimate Question of <br>Life, the Universe, and Everything.)
 n_divx | { n>0 \| n∈Z }  | number of compartments along X
-enable_holes | boolean | toggle holes inside the base
+enable_snap_cutouts | boolean | toggle snap cutouts inside the base
 enable_zsnap | boolean | automatically snap the bin size to the nearest <br> 7mm increment. default: true
 enable_lip | boolean | if you are not stacking the bin, you can disable the <br>top lip to save space. default: true
 enable_scoop_chamfer | boolean | toggles the chamfer on bottom edge <br> for easy removal of items
