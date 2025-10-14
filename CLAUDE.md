@@ -63,3 +63,35 @@ with the new 28mm grid size to match openGrid specification.
 clean and professional without footers like "Generated with Claude Code" or
 "Co-Authored-By: Claude". The commit message should focus solely on describing
 the changes made.
+
+### Changelog Management
+
+This project follows the [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
+standard. When making significant changes:
+
+1. Update `CHANGELOG.md` with your changes under the `[Unreleased]` section
+2. Use the following categories:
+   - `Added` for new features
+   - `Changed` for changes in existing functionality
+   - `Deprecated` for soon-to-be removed features
+   - `Removed` for now removed features
+   - `Fixed` for any bug fixes
+   - `Security` for vulnerability fixes
+
+Example changelog entry:
+
+```markdown
+## [Unreleased]
+
+### Added
+- New cylindrical compartment cutter function
+
+### Changed
+- Grid dimensions from 42mm to 28mm for openGrid compatibility
+
+### Removed
+- Baseplate generator (use external tile generator instead)
+```
+
+The changelog provides a human-readable summary of changes between versions,
+complementing the detailed commit history.

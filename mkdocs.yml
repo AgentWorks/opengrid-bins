@@ -1,4 +1,4 @@
-site_name: openGrid
+site_name: openGrid Bins
 theme: readthedocs
 nav:
     - Home: index.md
