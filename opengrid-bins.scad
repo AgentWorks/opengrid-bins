@@ -84,25 +84,15 @@ place_tab = 0; // [0:Everywhere-Normal,1:Top-Left Division]
 // scoop weight percentage. 0 disables scoop, 1 is regular scoop. Any real number will scale the scoop.
 scoop = 1; //[0:0.1:1]
 
-/* [Base Hole Options] */
-// only cut magnet/screw holes at the corners of the bin to save uneccesary print time
+/* [Base Snap Options] */
+// only cut snap cutouts at the corners of the bin to save unnecessary print time
 only_corners = false;
-//Use gridfinity refined hole style. Not compatible with magnet_holes!
-refined_holes = true;
-// Base will have holes for 6mm Diameter x 2mm high magnets.
-magnet_holes = false;
-// Base will have holes for M3 screws.
-screw_holes = false;
-// Magnet holes will have crush ribs to hold the magnet.
-crush_ribs = true;
-// Magnet/Screw holes will have a chamfer to ease insertion.
-chamfer_holes = true;
-// Magnet/Screw holes will be printed so supports are not needed.
-printable_hole_top = true;
-// Enable "gridfinity-refined" thumbscrew hole in the center of each base: https://www.printables.com/model/413761-gridfinity-refined
-enable_thumbscrew = false;
+// Base will have rectangular cutouts for openGrid snap attachment
+snap_cutouts = false;
+// Snap cutouts will have a chamfer to ease insertion
+chamfer_snaps = true;
 
-hole_options = bundle_hole_options(refined_holes, magnet_holes, screw_holes, crush_ribs, chamfer_holes, printable_hole_top);
+snap_options = bundle_snap_options(snap_cutouts, chamfer_snaps);
 
 // ===== IMPLEMENTATION ===== //
 
@@ -111,9 +101,9 @@ bin1 = new_bin(
     height_mm = height(gridz, gridz_define, enable_zsnap),
     fill_height = height_internal,
     include_lip = include_lip,
-    hole_options = hole_options,
+    hole_options = snap_options,
     only_corners = only_corners || half_grid,
-    thumbscrew = enable_thumbscrew,
+    thumbscrew = false,
     grid_dimensions = GRID_DIMENSIONS_MM / (half_grid ? 2 : 1)
 );
 

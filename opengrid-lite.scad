@@ -52,23 +52,15 @@ place_tab = 1; // [0:Everywhere-Normal,1:Top-Left Division]
 // thickness of bottom layer
 bottom_layer = 1;
 
-/* [Base Hole Options] */
-// only cut magnet/screw holes at the corners of the bin to save uneccesary print time
+/* [Base Snap Options] */
+// only cut snap cutouts at the corners of the bin to save unnecessary print time
 only_corners = false;
-//Use gridfinity refined hole style. Not compatible with magnet_holes!
-refined_holes = false;
-// Base will have holes for 6mm Diameter x 2mm high magnets.
-magnet_holes = true;
-// Base will have holes for M3 screws.
-screw_holes = true;
-// Magnet holes will have crush ribs to hold the magnet.
-crush_ribs = true;
-// Magnet/Screw holes will have a chamfer to ease insertion.
-chamfer_holes = true;
-// Magnet/Screw holes will be printed so supports are not needed.
-printable_hole_top = true;
+// Base will have rectangular cutouts for openGrid snap attachment
+snap_cutouts = false;
+// Snap cutouts will have a chamfer to ease insertion
+chamfer_snaps = true;
 
-hole_options = bundle_hole_options(refined_holes, magnet_holes, screw_holes, crush_ribs, chamfer_holes, printable_hole_top);
+snap_options = bundle_snap_options(snap_cutouts, chamfer_snaps);
 
 // ===== IMPLEMENTATION ===== //
 
@@ -76,7 +68,7 @@ binL = new_bin(
     grid_size = [gridx, gridy],
     height_mm = height(gridz, gridz_define, enable_zsnap),
     include_lip = style_lip == 0,
-    hole_options = hole_options,
+    hole_options = snap_options,
     only_corners = only_corners || half_grid,
     grid_dimensions = GRID_DIMENSIONS_MM / (half_grid ? 2 : 1),
     base_thickness = bottom_layer

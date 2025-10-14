@@ -44,116 +44,116 @@ class TestBinHoles:
 
     def test_no_holes(self, openscad_runner):
         vars = openscad_runner.parameters
-        vars["refined_holes"] = False
-        vars["magnet_holes"] = False
-        vars["screw_holes"] = False
+        vars["snap_cutouts"] = False
+        vars["snap_cutouts"] = False
+        vars["snap_cutouts"] = False
         openscad_runner.create_image([], Path('no_holes.png'))
 
     def test_only_corner_holes(self, openscad_runner):
         vars = openscad_runner.parameters
-        vars["refined_holes"] = True
-        vars["magnet_holes"] = False
-        vars["screw_holes"] = False
+        vars["snap_cutouts"] = True
+        vars["snap_cutouts"] = False
+        vars["snap_cutouts"] = False
         vars["only_corners"] = True
         openscad_runner.create_image([], Path('only_corner_holes.png'))
 
-    def test_refined_holes(self, openscad_runner):
+    def test_snap_cutouts(self, openscad_runner):
         vars = openscad_runner.parameters
-        vars["refined_holes"] = True
-        vars["magnet_holes"] = False
-        vars["screw_holes"] = False
-        openscad_runner.create_image([], Path('refined_holes.png'))
+        vars["snap_cutouts"] = True
+        vars["snap_cutouts"] = False
+        vars["snap_cutouts"] = False
+        openscad_runner.create_image([], Path('snap_cutouts.png'))
 
-    def test_refined_and_screw_holes(self, openscad_runner):
+    def test_refined_and_snap_cutouts(self, openscad_runner):
         vars = openscad_runner.parameters
-        vars["refined_holes"] = True
-        vars["magnet_holes"] = False
-        vars["screw_holes"] = True
-        vars["printable_hole_top"] = False
-        openscad_runner.create_image([], Path('refined_and_screw_holes.png'))
+        vars["snap_cutouts"] = True
+        vars["snap_cutouts"] = False
+        vars["snap_cutouts"] = True
+        vars["chamfer_snaps"] = False
+        openscad_runner.create_image([], Path('refined_and_snap_cutouts.png'))
 
-    def test_screw_holes_plain(self, openscad_runner):
+    def test_snap_cutouts_plain(self, openscad_runner):
         vars = openscad_runner.parameters
-        vars["refined_holes"] = False
-        vars["magnet_holes"] = False
-        vars["screw_holes"] = True
-        vars["printable_hole_top"] = False
-        openscad_runner.create_image([], Path('screw_holes_plain.png'))
+        vars["snap_cutouts"] = False
+        vars["snap_cutouts"] = False
+        vars["snap_cutouts"] = True
+        vars["chamfer_snaps"] = False
+        openscad_runner.create_image([], Path('snap_cutouts_plain.png'))
 
-    def test_screw_holes_printable(self, openscad_runner):
+    def test_snap_cutouts_printable(self, openscad_runner):
         vars = openscad_runner.parameters
-        vars["refined_holes"] = False
-        vars["magnet_holes"] = False
-        vars["screw_holes"] = True
-        vars["printable_hole_top"] = True
-        openscad_runner.create_image([], Path('screw_holes_printable.png'))
+        vars["snap_cutouts"] = False
+        vars["snap_cutouts"] = False
+        vars["snap_cutouts"] = True
+        vars["chamfer_snaps"] = True
+        openscad_runner.create_image([], Path('snap_cutouts_printable.png'))
 
-    def test_magnet_holes_plain(self, openscad_runner):
+    def test_snap_cutouts_plain(self, openscad_runner):
         vars = openscad_runner.parameters
-        vars["refined_holes"] = False
-        vars["magnet_holes"] = True
-        vars["screw_holes"] = False
-        vars["crush_ribs"] = False
-        vars["chamfer_holes"] = False
-        vars["printable_hole_top"] = False
-        openscad_runner.create_image([], Path('magnet_holes_plain.png'))
+        vars["snap_cutouts"] = False
+        vars["snap_cutouts"] = True
+        vars["snap_cutouts"] = False
+        vars["chamfer_snaps"] = False
+        vars["chamfer_snaps"] = False
+        vars["chamfer_snaps"] = False
+        openscad_runner.create_image([], Path('snap_cutouts_plain.png'))
 
-    def test_magnet_holes_chamfered(self, openscad_runner):
+    def test_snap_cutouts_chamfered(self, openscad_runner):
         vars = openscad_runner.parameters
-        vars["refined_holes"] = False
-        vars["magnet_holes"] = True
-        vars["screw_holes"] = False
-        vars["crush_ribs"] = False
-        vars["chamfer_holes"] = True
-        vars["printable_hole_top"] = False
-        openscad_runner.create_image([], Path('magnet_holes_chamfered.png'))
+        vars["snap_cutouts"] = False
+        vars["snap_cutouts"] = True
+        vars["snap_cutouts"] = False
+        vars["chamfer_snaps"] = False
+        vars["chamfer_snaps"] = True
+        vars["chamfer_snaps"] = False
+        openscad_runner.create_image([], Path('snap_cutouts_chamfered.png'))
 
-    def test_magnet_holes_printable(self, openscad_runner):
+    def test_snap_cutouts_printable(self, openscad_runner):
         vars = openscad_runner.parameters
-        vars["refined_holes"] = False
-        vars["magnet_holes"] = True
-        vars["screw_holes"] = False
-        vars["crush_ribs"] = False
-        vars["chamfer_holes"] = False
-        vars["printable_hole_top"] = True
-        openscad_runner.create_image([], Path('magnet_holes_printable.png'))
+        vars["snap_cutouts"] = False
+        vars["snap_cutouts"] = True
+        vars["snap_cutouts"] = False
+        vars["chamfer_snaps"] = False
+        vars["chamfer_snaps"] = False
+        vars["chamfer_snaps"] = True
+        openscad_runner.create_image([], Path('snap_cutouts_printable.png'))
 
-    def test_magnet_holes_with_crush_ribs(self, openscad_runner):
+    def test_snap_cutouts_with_chamfer_snaps(self, openscad_runner):
         vars = openscad_runner.parameters
-        vars["refined_holes"] = False
-        vars["magnet_holes"] = True
-        vars["screw_holes"] = False
-        vars["crush_ribs"] = True
-        vars["chamfer_holes"] = False
-        vars["printable_hole_top"] = False
-        openscad_runner.create_image([], Path('magnet_holes_with_crush_ribs.png'))
+        vars["snap_cutouts"] = False
+        vars["snap_cutouts"] = True
+        vars["snap_cutouts"] = False
+        vars["chamfer_snaps"] = True
+        vars["chamfer_snaps"] = False
+        vars["chamfer_snaps"] = False
+        openscad_runner.create_image([], Path('snap_cutouts_with_chamfer_snaps.png'))
 
-    def test_magnet_and_screw_holes_plain(self, openscad_runner):
+    def test_magnet_and_snap_cutouts_plain(self, openscad_runner):
         vars = openscad_runner.parameters
-        vars["refined_holes"] = False
-        vars["magnet_holes"] = True
-        vars["screw_holes"] = True
-        vars["crush_ribs"] = False
-        vars["chamfer_holes"] = False
-        vars["printable_hole_top"] = False
-        openscad_runner.create_image([], Path('magnet_and_screw_holes_plain.png'))
+        vars["snap_cutouts"] = False
+        vars["snap_cutouts"] = True
+        vars["snap_cutouts"] = True
+        vars["chamfer_snaps"] = False
+        vars["chamfer_snaps"] = False
+        vars["chamfer_snaps"] = False
+        openscad_runner.create_image([], Path('magnet_and_snap_cutouts_plain.png'))
 
-    def test_magnet_and_screw_holes_printable(self, openscad_runner):
+    def test_magnet_and_snap_cutouts_printable(self, openscad_runner):
         vars = openscad_runner.parameters
-        vars["refined_holes"] = False
-        vars["magnet_holes"] = True
-        vars["screw_holes"] = True
-        vars["crush_ribs"] = False
-        vars["chamfer_holes"] = False
-        vars["printable_hole_top"] = True
-        openscad_runner.create_image([], Path('magnet_and_screw_holes_printable.png'))
+        vars["snap_cutouts"] = False
+        vars["snap_cutouts"] = True
+        vars["snap_cutouts"] = True
+        vars["chamfer_snaps"] = False
+        vars["chamfer_snaps"] = False
+        vars["chamfer_snaps"] = True
+        openscad_runner.create_image([], Path('magnet_and_snap_cutouts_printable.png'))
 
-    def test_magnet_and_screw_holes_all(self, openscad_runner):
+    def test_magnet_and_snap_cutouts_all(self, openscad_runner):
         vars = openscad_runner.parameters
-        vars["refined_holes"] = False
-        vars["magnet_holes"] = True
-        vars["screw_holes"] = True
-        vars["crush_ribs"] = True
-        vars["chamfer_holes"] = True
-        vars["printable_hole_top"] = True
-        openscad_runner.create_image([], Path('magnet_and_screw_holes_all.png'))
+        vars["snap_cutouts"] = False
+        vars["snap_cutouts"] = True
+        vars["snap_cutouts"] = True
+        vars["chamfer_snaps"] = True
+        vars["chamfer_snaps"] = True
+        vars["chamfer_snaps"] = True
+        openscad_runner.create_image([], Path('magnet_and_snap_cutouts_all.png'))

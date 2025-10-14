@@ -43,8 +43,8 @@ gridz = 6;
 n_divx = 2;
 
 /* [Toggles] */
-// toggle holes on the base for magnet
-enable_holes = true;
+// toggle snap cutouts on the base (Note: may not be practical for vase mode)
+enable_holes = false;
 // round up the bin height to match the closest 7mm unit
 enable_zsnap = false;
 // toggle the lip on the top of the bin that allows stacking
@@ -217,18 +217,9 @@ module gridfinityBaseVase(wall_thickness, bottom_thickness) {
 }
 
 module block_magnet_blank(o = 0, half = true) {
-    magnet_radius = MAGNET_HOLE_RADIUS + o;
-
-    translate([d_hole/2, d_hole/2, 0.1])
-    difference() {
-        hull() {
-            cylinder(r = magnet_radius, h = MAGNET_HOLE_DEPTH*2, center = true);
-            cylinder(r = magnet_radius-(BASE_PROFILE_HEIGHT+0.1-MAGNET_HOLE_DEPTH), h = (BASE_PROFILE_HEIGHT+0.1)*2, center = true);
-        }
-        if (half)
-        mirror([0,0,1])
-        cylinder(r=magnet_radius*2, h = (BASE_PROFILE_HEIGHT+0.1)*4);
-    }
+    // Deprecated: openGrid uses snaps, not magnets
+    // Snap cutouts don't make sense for vase mode anyway
+    // Keeping module stub for compatibility
 }
 
 module block_pinch(height_mm) {

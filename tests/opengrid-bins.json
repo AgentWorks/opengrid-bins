@@ -11,8 +11,7 @@
             "cdivx": "0",
             "cdivy": "0",
             "ch": "1",
-            "chamfer_holes": "true",
-            "crush_ribs": "true",
+            "chamfer_snaps": "true",
             "div_base_x": "0",
             "div_base_y": "0",
             "divx": "0",
@@ -23,12 +22,9 @@
             "gridz": "6",
             "gridz_define": "0",
             "height_internal": "0",
-            "magnet_holes": "false",
+            "snap_cutouts": "false",
             "only_corners": "false",
-            "printable_hole_top": "true",
-            "refined_holes": "true",
             "scoop": "0",
-            "screw_holes": "false",
             "style_lip": "0",
             "style_tab": "1"
         }

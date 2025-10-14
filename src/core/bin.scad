@@ -34,7 +34,7 @@ use <../helpers/shapes.scad>
           Negative numbers are subtracted from the height.
           Set to -height_mm for no infill.
  * @param include_lip If the bin should have a stacking lip.
- * @param hole_options @see bundle_hole_options
+ * @param hole_options @see bundle_snap_options
  * @param only_corners If only the outer corners of the bin should have holes.
  * @param thumbscrew If the bin's base should have a thumbscrew hole.
  * @param grid_dimensions [length, width] of a single Gridfinity base.
@@ -45,7 +45,7 @@ function new_bin(
         height_mm,
         fill_height = 0,
         include_lip = true,
-        hole_options=bundle_hole_options(),
+        hole_options=bundle_snap_options(),
         only_corners=false,
         thumbscrew=false,
         grid_dimensions = GRID_DIMENSIONS_MM,
@@ -55,7 +55,7 @@ function new_bin(
     assert(is_num(height_mm) && height_mm >= BASE_HEIGHT)
     assert(is_num(fill_height))
     assert(is_bool(include_lip))
-    assert(is_hole_options(hole_options))
+    assert(is_snap_options(hole_options))
     assert(is_bool(only_corners))
     assert(is_bool(thumbscrew))
     assert(is_valid_2d(grid_dimensions) && is_positive(grid_dimensions))
@@ -173,7 +173,7 @@ module bin_render_infill(bin) {
             square(grid_size_mm, center=true);
 
             color("firebrick")
-            gridfinityBase(grid_size,
+            openGridBase(grid_size,
                 grid_dimensions=grid_dimensions,
                 hole_options=hole_options,
                 only_corners=only_corners,
@@ -216,13 +216,13 @@ module bin_render_base(bin) {
     grid_dimensions = bin_get_grid_dimensions(bin);
 
     if(base_thickness == BASE_HEIGHT) {
-        gridfinityBase(grid_size,
+        openGridBase(grid_size,
             grid_dimensions=grid_dimensions,
             hole_options=hole_options,
             only_corners=only_corners,
             thumbscrew=thumbscrew);
     } else {
-        gridfinity_base_lite(grid_size,
+        opengrid_base_lite(grid_size,
             grid_dimensions=grid_dimensions,
             wall_thickness=d_wall,
             bottom_thickness=base_thickness,
