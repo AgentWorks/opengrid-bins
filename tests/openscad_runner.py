@@ -105,7 +105,6 @@ class OpenScadRunner:
     parameters: Optional[dict]
     '''If set, a temporary parameter file is created, and used with these variables'''
 
-    WINDOWS_DEFAULT_PATH = 'C:\\Program Files\\OpenSCAD\\openscad.exe'
     TOP_ANGLE_CAMERA = CameraArguments(Vec3(0,0,0),Vec3(45,0,45),150)
 
     common_arguments = [
@@ -119,8 +118,28 @@ class OpenScadRunner:
         ] + \
         set_variable_argument('$fa', 8) + set_variable_argument('$fs', 0.25)
 
+    @staticmethod
+    def _find_openscad_binary():
+        '''Find OpenSCAD binary path based on platform'''
+        import platform
+        import shutil
+
+        # Try to find openscad in PATH first
+        openscad_path = shutil.which('openscad')
+        if openscad_path:
+            return openscad_path
+
+        # Platform-specific default paths
+        system = platform.system()
+        if system == 'Windows':
+            return 'C:\\Program Files\\OpenSCAD\\openscad.exe'
+        elif system == 'Darwin':  # macOS
+            return '/opt/homebrew/bin/openscad'
+        else:  # Linux and others
+            return '/usr/bin/openscad'
+
     def __init__(self, file_path: Path):
-        self.openscad_binary_path = self.WINDOWS_DEFAULT_PATH
+        self.openscad_binary_path = self._find_openscad_binary()
         self.scad_file_path = file_path
         self.image_folder_base = Path('.')
         self.camera_arguments = None

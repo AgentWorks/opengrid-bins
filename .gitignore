@@ -5,6 +5,11 @@ batch/
 site/
 /*.json
 
+# Test output images
+images/base_hole_options/*.png
+images/hole_cutouts/*.png
+images/spiral_vase_base/*.png
+
 # From https://github.com/github/gitignore/blob/main/Python.gitignore
 # Byte-compiled / optimized / DLL files
 __pycache__/
