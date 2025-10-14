@@ -18,7 +18,7 @@ enable_zsnap | boolean | automatically snap the bin size to the nearest 7mm incr
 style_lip | {0, 1, 2} | if you are not stacking the bin, you can disable the top lip <br> to save space. <br>     • (0) Regular lip <br>     • (1) Subtract lip to save space <br>     • (2) Disable lip while retaining height
 gridz_define | { n>0 \| n∈R } | determine what the variable "gridz" applies to based on <br> your use case. default: 0. <br>     • (0) gridz is the height in # of 7mm increments (Zack) <br>     • (1) gridz is the internal height in millimeters <br>     • (2) gridz is the overall external height of the bin in millimeters
 style_tab | { 0, 1, 2, 3, 4, 5 } | how the tabs for labels are generated. <br>     • (0) Full tabs across the entire compartment <br>     • (1) automatic tabs <br>     - left aligned tabs on the left edge<br>     - right aligned tabs on right edge<br>     -  center tabs otherwise <br>     • (2) left aligned tabs <br>     • (3) center aligned tabs <br>     • (4) right aligned tabs <br>     • (5) no tabs
-style_hole | { 0, 1, 2, 3 } | the style of holes in the bases <br>     • (0) No holes <br>     • (1) Magnet holes only <br>     • (2) Magnet and screw holes - no printable slit <br>     • (3) Magnet and screw holes - with printable slit
+style_hole | deprecated | **Deprecated**: openGrid uses snap cutouts instead of holes. See snap_cutouts parameter in opengrid-lite.scad
 
 <br>
 
@@ -41,7 +41,7 @@ gridz_define | { n>0 \| n∈R } | determine what the variable "gridz" applies to
 style_lip | {0, 1, 2} | if you are not stacking the bin, you can disable the top lip <br> to save space. <br>     • (0) Regular lip <br>     • (1) Subtract lip to save space <br>     • (2) Disable lip while retaining height
 enable_zsnap | boolean | automatically snap the bin size to the nearest 7mm increment. <br> default: true
 length | { n>0 \| n∈R } | length of one unit of the base. <br> default: 42 (The Answer to the Ultimate Question of Life, <br>the Universe, and Everything.)
-style_hole | { 0, 1, 2, 3 } | the style of holes in the bases <br>     • (0) No holes <br>     • (1) Magnet holes only <br>     • (2) Magnet and screw holes - no printable slit <br>     • (3) Magnet and screw holes - with printable slit
+style_hole | deprecated | **Deprecated**: openGrid uses snap cutouts instead of holes. See snap_cutouts parameter in opengrid-lite.scad
 
 ```
 // Example: generate a 3x3x6 bin with 2x2 compartments, that is hollow

@@ -128,7 +128,7 @@ class TestBinHoles:
         vars["chamfer_snaps"] = False
         openscad_runner.create_image([], Path('snap_cutouts_with_chamfer_snaps.png'))
 
-    def test_magnet_and_snap_cutouts_plain(self, openscad_runner):
+    def test_snap_cutouts_multiple_plain(self, openscad_runner):
         vars = openscad_runner.parameters
         vars["snap_cutouts"] = False
         vars["snap_cutouts"] = True
@@ -136,9 +136,9 @@ class TestBinHoles:
         vars["chamfer_snaps"] = False
         vars["chamfer_snaps"] = False
         vars["chamfer_snaps"] = False
-        openscad_runner.create_image([], Path('magnet_and_snap_cutouts_plain.png'))
+        openscad_runner.create_image([], Path('snap_cutouts_multiple_plain.png'))
 
-    def test_magnet_and_snap_cutouts_printable(self, openscad_runner):
+    def test_snap_cutouts_multiple_chamfered(self, openscad_runner):
         vars = openscad_runner.parameters
         vars["snap_cutouts"] = False
         vars["snap_cutouts"] = True
@@ -146,9 +146,9 @@ class TestBinHoles:
         vars["chamfer_snaps"] = False
         vars["chamfer_snaps"] = False
         vars["chamfer_snaps"] = True
-        openscad_runner.create_image([], Path('magnet_and_snap_cutouts_printable.png'))
+        openscad_runner.create_image([], Path('snap_cutouts_multiple_chamfered.png'))
 
-    def test_magnet_and_snap_cutouts_all(self, openscad_runner):
+    def test_snap_cutouts_multiple_all(self, openscad_runner):
         vars = openscad_runner.parameters
         vars["snap_cutouts"] = False
         vars["snap_cutouts"] = True
@@ -156,4 +156,4 @@ class TestBinHoles:
         vars["chamfer_snaps"] = True
         vars["chamfer_snaps"] = True
         vars["chamfer_snaps"] = True
-        openscad_runner.create_image([], Path('magnet_and_snap_cutouts_all.png'))
+        openscad_runner.create_image([], Path('snap_cutouts_multiple_all.png'))

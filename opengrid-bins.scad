@@ -1,7 +1,7 @@
 // ===== INFORMATION ===== //
 /*
  IMPORTANT: rendering will be better in development builds and not the official release of OpenSCAD, but it makes rendering only take a couple seconds, even for comically large bins.
- the magnet holes can have an extra cut in them to make it easier to print without supports
+ the snap cutouts can have chamfers to make it easier to insert bins
  tabs will automatically be disabled when gridz is less than 3, as the tabs take up too much space
  base functions can be found in "opengrid-utility.scad"
  comments like ' //.5' after variables are intentional and used by the customizer

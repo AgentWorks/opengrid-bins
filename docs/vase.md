@@ -14,7 +14,7 @@ All parameters are global. The customizer has descriptions for all parameters. I
 1. Change the *Printer Settings* parameters to match your slicer and printer settings.
 2. Run the `gridfinityVaseBase()` module. This will generate a single spiral-capable base. Export as an STL file. You will need to print multiple of these, so it recommended to fill a base plate with them using the "complete individual objects" option (or equivilant) in your slicer. You only need to do this step initially, and then each time your printer settings change afterwards.
 3. Change the bin parameters and run `gridfinityVase()` module to generate the main bin.
-4. Glue bases to the bottom of the bin. I recommend superglue on the corners and the top of the magnet holes.
+4. Glue bases to the bottom of the bin. I recommend superglue on the corners and the top of the snap cutouts.
 
 How your sliced files should look (cross section shown for 1x1 bin):
 
