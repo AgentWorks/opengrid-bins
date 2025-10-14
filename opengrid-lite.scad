@@ -8,7 +8,7 @@ https://github.com/kennetek/gridfinity-rebuilt-openscad (original Gridfinity pro
 
 include <src/core/standard.scad>
 use <src/core/opengrid-utility.scad>
-use <src/core/opengrid-holes.scad>
+use <src/core/opengrid-snaps.scad>
 use <src/core/bin.scad>
 use <src/core/cutouts.scad>
 

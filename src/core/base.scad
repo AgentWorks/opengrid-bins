@@ -4,7 +4,7 @@
  */
 
 include <standard.scad>
-use <opengrid-holes.scad>
+use <opengrid-snaps.scad>
 use <../helpers/generic-helpers.scad>
 use <../helpers/grid.scad>
 use <../helpers/list.scad>

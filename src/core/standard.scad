@@ -19,43 +19,35 @@ GRID_DIMENSIONS_MM = [28, 28];
 TOLLERANCE = 0.02;
 
 // ****************************************
-// Magnet / Screw Hole Constants
+// openGrid Snap Constants
+// Based on openGrid specifications
 // ****************************************
 LAYER_HEIGHT = 0.2;
-MAGNET_HEIGHT = 2;
 
-SCREW_HOLE_RADIUS = 3 / 2;
-MAGNET_HOLE_RADIUS = 6.5 / 2;
-MAGNET_HOLE_DEPTH = MAGNET_HEIGHT + (LAYER_HEIGHT * 2);
+// openGrid board dimensions
+BOARD_THICKNESS_FULL = 6.8;
+BOARD_THICKNESS_LITE = 4.0;
 
-// distance of hole from side of bin
-d_hole_from_side=8;
+// Snap dimensions
+SNAP_THICKNESS_FULL = 6.8;
+SNAP_THICKNESS_LITE = 3.4;
+SNAP_WIDTH = 10;  // Approximate snap width
+SNAP_LENGTH = 15; // Approximate snap length
 
-// Based on openGrid specifications
-HOLE_DISTANCE_FROM_BOTTOM_EDGE = 4.8;
+// Distance of snap from side of bin
+d_snap_from_side = 8;
 
-// Meassured diameter in Fusion360.
-// Smaller than the magnet to keep it squeezed.
-REFINED_HOLE_RADIUS = 5.86 / 2;
-REFINED_HOLE_HEIGHT = MAGNET_HEIGHT - 0.1;
-// How many layers are between a Gridfinity Refined Hole and the bottom
-REFINED_HOLE_BOTTOM_LAYERS = 2;
+// Distance from bottom edge (aligned with grid)
+SNAP_DISTANCE_FROM_BOTTOM_EDGE = 4.8;
 
-// Experimentally chosen for a press fit.
-MAGNET_HOLE_CRUSH_RIB_INNER_RADIUS = 5.9 / 2;
-// Mostly arbitrarily chosen.
-// 30 ribs does not print with a 0.4mm nozzle.
-// Anything 5 or under produces a hole that is not round.
-MAGNET_HOLE_CRUSH_RIB_COUNT = 8;
+// Snap hole dimensions for base
+SNAP_HOLE_WIDTH = 10.5;   // Slightly larger than snap for clearance
+SNAP_HOLE_LENGTH = 15.5;  // Slightly larger than snap for clearance
+SNAP_HOLE_DEPTH = 7.0;    // Depth to accommodate snap
 
-// Radius to add when chamfering magnet and screw holes.
-CHAMFER_ADDITIONAL_RADIUS = 0.8;
+// Chamfer settings for snap holes
+CHAMFER_ADDITIONAL_SIZE = 0.8;
 CHAMFER_ANGLE = 45;
-
-// When countersinking the baseplate, how much to add to the screw radius.
-BASEPLATE_SCREW_COUNTERSINK_ADDITIONAL_RADIUS = 5/2;
-BASEPLATE_SCREW_COUNTERBORE_RADIUS = 5.5/2;
-BASEPLATE_SCREW_COUNTERBORE_HEIGHT = 3;
 
 // ****************************************
 // Tab Constants

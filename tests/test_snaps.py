@@ -1,5 +1,5 @@
 """
-Tests for gridfinity-rebuilt-holes.scad
+Tests for opengrid-snaps.scad
 @Copyright Arthur Moore 2024 MIT License
 """
 
@@ -10,15 +10,15 @@ from openscad_runner import *
 
 @pytest.fixture
 def openscad_runner(pytestconfig) -> OpenScadRunner:
-    scad_path = pytestconfig.rootpath.joinpath('src/core/opengrid-holes.scad')
+    scad_path = pytestconfig.rootpath.joinpath('src/core/opengrid-snaps.scad')
     scad_runner = OpenScadRunner(scad_path)
-    scad_runner.image_folder_base = pytestconfig.rootpath.joinpath('images/hole_cutouts/')
+    scad_runner.image_folder_base = pytestconfig.rootpath.joinpath('images/snap_cutouts/')
     scad_runner.camera_arguments = CameraArguments(Vec3(0,0,0), CameraRotations.AngledTop, 50)
     return scad_runner
 
-class TestHoleCutouts:
+class TestSnapCutouts:
     """
-    Test Hole Cutouts.  The negatives used with `difference()` to create a hole.
+    Test Snap Cutouts.  The negatives used with `difference()` to create snap cutouts.
 
     Currently only makes sure code runs, and outputs pictures for manual verification.
     """
