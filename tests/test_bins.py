@@ -23,9 +23,9 @@ def openscad_runner(pytestconfig, default_parameters) -> OpenScadRunner:
     scad_runner.camera_arguments = CameraArguments(Vec3(0,0,0), CameraRotations.AngledBottom, 150)
     return scad_runner
 
-class TestBinHoles:
+class TestBinSnaps:
     """
-    Test how a single base looks with holes cut out.
+    Test how a single base looks with snap cutouts.
 
     Currently only makes sure code runs, and outputs pictures for manual verification.
     """

@@ -35,7 +35,7 @@ use <../helpers/shapes.scad>
           Set to -height_mm for no infill.
  * @param include_lip If the bin should have a stacking lip.
  * @param hole_options @see bundle_snap_options
- * @param only_corners If only the outer corners of the bin should have holes.
+ * @param only_corners If only the outer corners of the bin should have snap cutouts.
  * @param grid_dimensions [length, width] of a single Gridfinity base.
  * @param base_thickness Lower this to create a "lite" bin with a hollow base.
  */

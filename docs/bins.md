@@ -77,7 +77,7 @@ height(30, 1, 0, false);
 
 ### gridfinityBase
 
-Generates the bases for bins. Has various different hole styles, and can be subdivided.
+Generates the bases for bins. **Note:** This function uses deprecated Gridfinity-style parameters.
 
 ** `gridfinityBase (gridx, gridy, length, style_hole)`  **
 
@@ -160,8 +160,8 @@ h | { n>0 \| n∈R } | Height of the area, in base units (1 unit = 1 `length`)
 
 ```
 // Example:
-// cuts a cylindrical hole of radius 5
-// hole center is located 1/2 units from the right edge of the bin, and 1 unit from the top
+// cuts a cylindrical cutout of radius 5
+// cutout center is located 1/2 units from the right edge of the bin, and 1 unit from the top
 gridfinityInit(3, 3, height(6), 0, 42) {
     cut_move(x=2, y=1, w=1, h=2) {
           cylinder(r=5, h=100, center=true);

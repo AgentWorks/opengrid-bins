@@ -73,7 +73,7 @@ depth = 0;  //.1
 cut_cylinders = false;
 // diameter of cylindrical cut outs
 cd = 10; // .1
-// chamfer around the top rim of the holes
+// chamfer around the top rim of the cylindrical cuts
 c_chamfer = 0.5; // .1
 
 /* [Compartment Features] */
@@ -227,7 +227,7 @@ bin_render(bin_33) {
     compartment_cutter(cgs([1, 2]), center_top=false);
 }
 
-// A pattern of three cylinderical holes.
+// A pattern of three cylindrical cuts.
 translate([0, -150, 0])
 bin_render(bin_33) {
     depth = bin_get_infill_size_mm(bin_33).z;
