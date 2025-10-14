@@ -45,12 +45,6 @@ of OpenSCAD. This can speed up rendering from 10 minutes down to a couple of
 seconds, even for comically large bins. It is not a requirement to use
 development versions of OpenSCAD.
 
-## External libraries
-
-- `threads-scad` (https://github.com/rcolyer/threads-scad) is used for creating
-  threaded holes, and is included in this project under
-  `external/threads-scad/threads.scad`.
-
 ## Enjoy!
 
 [<img src="./images/spin.gif" width="160">]()

@@ -231,14 +231,6 @@ function base_bottom_dimensions(top_dimensions = BASE_TOP_DIMENSIONS) =
     top_dimensions
     - 2*[_base_profile_max_mm.x, _base_profile_max_mm.x];
 
-// ***************
-// openGrid Thumbscrew
-// ***************
-
-BASE_THUMBSCREW_OUTER_DIAMETER=15;
-BASE_THUMBSCREW_PITCH=1.5;
-
-
 // ****************************************
 // Weighted Baseplate
 // ****************************************

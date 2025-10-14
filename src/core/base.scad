@@ -9,7 +9,6 @@ use <../helpers/generic-helpers.scad>
 use <../helpers/grid.scad>
 use <../helpers/list.scad>
 use <../helpers/shapes.scad>
-use <../external/threads-scad/threads.scad>
 
 _debug = false;
 //$fa = 8;
@@ -19,17 +18,13 @@ _debug = false;
  * @brief Create the base of an openGrid bin, or use it for a custom object.
  * @param grid_size Number of bases in each dimension. [x, y]
  * @param grid_dimensions [length, width] of a single openGrid base.
- * @param thumbscrew Enable thumbscrew hole in the center of each base unit. This is a ISO Metric Profile, 15.0mm size, M15x1.5 designation.
  */
-module openGridBase(grid_size, grid_dimensions=GRID_DIMENSIONS_MM, hole_options=bundle_snap_options(), only_corners=false, thumbscrew=false) {
+module openGridBase(grid_size, grid_dimensions=GRID_DIMENSIONS_MM, hole_options=bundle_snap_options(), only_corners=false) {
     assert(is_list(grid_dimensions) && len(grid_dimensions) == 2 &&
         grid_dimensions.x > 0 && grid_dimensions.y > 0);
     assert(is_list(grid_size) && len(grid_size) == 2 &&
         grid_size.x > 0 && grid_size.y > 0);
-    assert(
-        is_bool(only_corners) &&
-        is_bool(thumbscrew)
-    );
+    assert(is_bool(only_corners));
 
     individual_base_size_mm = grid_dimensions - BASE_GAP_MM;
 
@@ -49,20 +44,13 @@ module openGridBase(grid_size, grid_dimensions=GRID_DIMENSIONS_MM, hole_options=
                 base_solid(individual_base_size_mm);
             }
 
-            if(thumbscrew) {
-                thumbscrew_position = grid_size_mm - individual_base_size_mm;
-                pattern_grid([2, 2], thumbscrew_position, true, true) {
-                    _base_thumbscrew();
-                }
-            }
-
             _base_holes(hole_options, grid_size_mm);
             _base_preview_fix();
         }
     }
     else {
         pattern_grid(grid_size, grid_dimensions, true, true)
-        block_base(hole_options, individual_base_size_mm, thumbscrew=thumbscrew);
+        block_base(hole_options, individual_base_size_mm);
     }
 }
 
@@ -251,18 +239,6 @@ module base_solid(top_dimensions=BASE_TOP_DIMENSIONS) {
 }
 
 /**
- * @brief Internal function to create the negative for a Gridfinity Refined thumbscrew hole.
- * @details Magic constants are what the threads.ScrewHole function does.
- */
-module _base_thumbscrew() {
-    ScrewThread(
-        1.01 * BASE_THUMBSCREW_OUTER_DIAMETER + 1.25 * 0.4,
-        BASE_PROFILE_HEIGHT,
-        BASE_THUMBSCREW_PITCH
-    );
-}
-
-/**
  * @brief Internal Code. Generates the 4 holes for a single base.
  * @details Need this fancy code to support refined holes and non-square bases.
  * @param top_dimensions [length, width] of a single Gridfinity base.
@@ -291,20 +267,15 @@ module _base_holes(hole_options, top_dimensions=BASE_TOP_DIMENSIONS, offset=0) {
  * @details Height is BASE_PROFILE_HEIGHT.
  * @param hole_options @see block_base_snap.snap_options
  * @param top_dimensions [x, y] size of a single base.  Only set if deviating from the standard!
- * @param thumbscrew Enable "gridfinity-refined" thumbscrew hole in the center of each base unit. This is a ISO Metric Profile, 15.0mm size, M15x1.5 designation.
  */
-module block_base(hole_options, top_dimensions=BASE_TOP_DIMENSIONS, thumbscrew=false) {
+module block_base(hole_options, top_dimensions=BASE_TOP_DIMENSIONS) {
     assert(is_valid_2d(top_dimensions) && is_positive(top_dimensions));
-    assert(is_bool(thumbscrew));
 
     base_bottom = base_bottom_dimensions(top_dimensions);
 
     difference() {
         base_solid(top_dimensions);
 
-        if (thumbscrew) {
-            _base_thumbscrew();
-        }
         _base_holes(hole_options, top_dimensions);
         _base_preview_fix();
     }
