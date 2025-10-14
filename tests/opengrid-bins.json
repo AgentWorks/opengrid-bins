@@ -12,8 +12,6 @@
             "cdivy": "0",
             "ch": "1",
             "chamfer_snaps": "true",
-            "div_base_x": "0",
-            "div_base_y": "0",
             "divx": "0",
             "divy": "0",
             "enable_zsnap": "false",
