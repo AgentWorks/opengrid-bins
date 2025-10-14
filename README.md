@@ -14,7 +14,6 @@ customization through OpenSCAD.
 [<img src="./images/compartment_dimension.gif" width="320">]()
 [<img src="./images/height_dimension.gif" width="320">]()
 [<img src="./images/tab_dimension.gif" width="320">]()
-[<img src="./images/holes_dimension.gif" width="320">]()
 [<img src="./images/custom_dimension.gif" width="320">]()
 
 ## Features
