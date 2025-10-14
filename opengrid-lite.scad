@@ -25,8 +25,6 @@ gridx = 3;
 gridy = 3;
 // bin height. See bin height information and "gridz_define" below.
 gridz = 6;
-// Half grid sized bins.  Implies "only corners".
-half_grid = false;
 
 /* [Compartments] */
 // number of X Divisions
@@ -69,8 +67,7 @@ binL = new_bin(
     height_mm = height(gridz, gridz_define, enable_zsnap),
     include_lip = style_lip == 0,
     snap_options = snap_options,
-    only_corners = only_corners || half_grid,
-    grid_dimensions = GRID_DIMENSIONS_MM / (half_grid ? 2 : 1),
+    only_corners = only_corners,
     base_thickness = bottom_layer
 );
 

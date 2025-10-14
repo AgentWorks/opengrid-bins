@@ -47,9 +47,6 @@ gridy = 2;
 // bin height. See bin height information and "gridz_define" below.
 gridz = 6; //.1
 
-// Half grid sized bins.  Implies "only corners".
-half_grid = false;
-
 /* [Height] */
 // How "gridz" is used to calculate height.  Some exclude 7mm/1U base, others exclude ~3.5mm (4.4mm nominal) stacking lip.
 gridz_define = 0; // [0:7mm increments - Excludes Stacking Lip, 1:Internal mm - Excludes Base & Stacking Lip, 2:External mm - Excludes Stacking Lip, 3:External mm]
@@ -102,8 +99,7 @@ bin1 = new_bin(
     fill_height = height_internal,
     include_lip = include_lip,
     snap_options = snap_options,
-    only_corners = only_corners || half_grid,
-    grid_dimensions = GRID_DIMENSIONS_MM / (half_grid ? 2 : 1)
+    only_corners = only_corners
 );
 
 echo(str(
