@@ -18,7 +18,7 @@ def default_parameters(pytestconfig):
 def openscad_runner(pytestconfig, default_parameters) -> OpenScadRunner:
     scad_path = pytestconfig.rootpath.joinpath('opengrid-bins.scad')
     scad_runner = OpenScadRunner(scad_path)
-    scad_runner.image_folder_base = pytestconfig.rootpath.joinpath('images/base_hole_options/')
+    scad_runner.image_folder_base = pytestconfig.rootpath.joinpath('images/base_snap_options/')
     scad_runner.parameters = default_parameters.copy()
     scad_runner.camera_arguments = CameraArguments(Vec3(0,0,0), CameraRotations.AngledBottom, 150)
     return scad_runner
@@ -38,7 +38,7 @@ class TestBinHoles:
 
     def setUp(self, openscad_runner):
         openscad_runner = OpenScadRunner(Path('../src/core/opengrid-rebuilt-bins.scad'))
-        openscad_runner.image_folder_base = Path('../images/base_hole_options/')
+        openscad_runner.image_folder_base = Path('../images/base_snap_options/')
         openscad_runner.parameters = self.default_parameters.copy()
         openscad_runner.camera_arguments = CameraArguments(Vec3(0,0,0), CameraRotations.AngledBottom, 150)
 
