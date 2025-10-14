@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - openGrid snap-based attachment system (rectangular cutouts)
 - New snap constants: SNAP_THICKNESS, SNAP_WIDTH, SNAP_LENGTH, etc.
 - bundle_snap_options() for snap configuration
-- Legacy compatibility layer for old magnet/screw hole API
+- block_base_snap() for creating snap cutouts
 
 ### Changed
 - Grid dimensions from 42mm (Gridfinity) to 28mm (openGrid)
@@ -33,5 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Screw hole constants and functions
 - Refined hole mechanism
 - Crush rib functionality (magnet-specific)
+- bundle_hole_options() and block_base_hole() - replaced by snap functions
+- Legacy compatibility layer for magnet/screw API
 
 [Unreleased]: https://github.com/yourusername/opengrid-openscad/compare/v0.0.0...HEAD

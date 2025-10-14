@@ -82,34 +82,5 @@ module block_base_snap(snap_options, o=0) {
     }
 }
 
-/**
- * @brief Legacy compatibility - maps old hole options to snap options.
- * @details Maintains API compatibility during transition.
- * @deprecated Use bundle_snap_options instead.
- */
-function bundle_hole_options(refined_hole=false, magnet_hole=false, screw_hole=false, crush_ribs=false, chamfer=false, supportless=false) =
-    bundle_snap_options(
-        snap_cutout = (magnet_hole || screw_hole || refined_hole),
-        chamfer = chamfer
-    );
-
-/**
- * @brief Legacy compatibility - maps old hole function to snap function.
- * @deprecated Use block_base_snap instead.
- */
-module block_base_hole(hole_options, o=0) {
-    // Convert old hole_options to snap_options if needed
-    if (is_list(hole_options) && len(hole_options) == 7 && hole_options[0] == "hole_options_struct") {
-        // Old format: convert to new format
-        snap_cutout = hole_options[1] || hole_options[2] || hole_options[3]; // refined_hole || magnet_hole || screw_hole
-        chamfer = hole_options[5];
-        snap_options = bundle_snap_options(snap_cutout, chamfer);
-        block_base_snap(snap_options, o);
-    } else {
-        // Assume it's already new format
-        block_base_snap(hole_options, o);
-    }
-}
-
 // Test module - commented out
 // block_base_snap(bundle_snap_options(snap_cutout=true, chamfer=true));
