@@ -1,6 +1,6 @@
 /**
  * @File gridfinity-baseplate.scad
- * @Brief Functions and standards to make a SINGLE gridfinity baseplate.
+ * @Brief Functions and standards to make a SINGLE openGrid baseplate.
  * @Copyright Arthur Moore 2025 MIT License
  * @WARNING: Where possible, `use` thise file. Constants may change between minor versions.
  */
@@ -10,13 +10,13 @@ use <../helpers/shapes.scad>
 
 // ****************************************
 // Baseplate constants
-// Based on https://gridfinity.xyz/specification/
+// Based on openGrid specifications
 // ****************************************
 
 /**
  * @Summary Length & Width of a single baseplate.
  */
-BASEPLATE_DIMENSIONS = [42, 42];
+BASEPLATE_DIMENSIONS = [28, 28];
 
 /**
  * @Summary Minimum height of a baseplate.
@@ -31,7 +31,7 @@ BASEPLATE_HEIGHT = 5;
 BASEPLATE_OUTER_DIAMETER = 8;
 
 /**
- * @Summary Profile of a Gridfinity baseplate as described in the spec.
+ * @Summary Profile of an openGrid baseplate as described in the spec.
  * @Details This is just a line, and will not create a solid polygon.
  *          Does NOT include the clearance height.
  */

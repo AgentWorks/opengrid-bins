@@ -1,5 +1,5 @@
 """
-Tests for gridfinity-rebuilt-bins.scad
+Tests for opengrid-rebuilt-bins.scad
 @Copyright Arthur Moore 2024 MIT License
 """
 
@@ -10,13 +10,13 @@ from openscad_runner import *
 
 @pytest.fixture(scope="class")
 def default_parameters(pytestconfig):
-    parameter_file_path = pytestconfig.rootpath.joinpath("tests/gridfinity-rebuilt-bins.json")
+    parameter_file_path = pytestconfig.rootpath.joinpath("tests/opengrid-rebuilt-bins.json")
     parameter_file_data = ParameterFile.from_json(parameter_file_path.read_text())
     return parameter_file_data.parameterSets["Default"]
 
 @pytest.fixture
 def openscad_runner(pytestconfig, default_parameters) -> OpenScadRunner:
-    scad_path = pytestconfig.rootpath.joinpath('gridfinity-rebuilt-bins.scad')
+    scad_path = pytestconfig.rootpath.joinpath('opengrid-rebuilt-bins.scad')
     scad_runner = OpenScadRunner(scad_path)
     scad_runner.image_folder_base = pytestconfig.rootpath.joinpath('images/base_hole_options/')
     scad_runner.parameters = default_parameters.copy()
@@ -32,12 +32,12 @@ class TestBinHoles:
 
     @classmethod
     def setUpClass(cls):
-        parameter_file_path = Path("gridfinity-rebuilt-bins.json")
+        parameter_file_path = Path("opengrid-rebuilt-bins.json")
         parameter_file_data = ParameterFile.from_json(parameter_file_path.read_text())
         cls.default_parameters = parameter_file_data.parameterSets["Default"]
 
     def setUp(self, openscad_runner):
-        openscad_runner = OpenScadRunner(Path('../src/core/gridfinity-rebuilt-bins.scad'))
+        openscad_runner = OpenScadRunner(Path('../src/core/opengrid-rebuilt-bins.scad'))
         openscad_runner.image_folder_base = Path('../images/base_hole_options/')
         openscad_runner.parameters = self.default_parameters.copy()
         openscad_runner.camera_arguments = CameraArguments(Vec3(0,0,0), CameraRotations.AngledBottom, 150)

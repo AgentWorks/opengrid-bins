@@ -4,7 +4,7 @@
  */
 
 include <standard.scad>
-use <gridfinity-rebuilt-holes.scad>
+use <opengrid-rebuilt-holes.scad>
 use <../helpers/generic-helpers.scad>
 use <../helpers/grid.scad>
 use <../helpers/list.scad>
@@ -16,12 +16,12 @@ _debug = false;
 //$fs = 0.25;
 
 /**
- * @brief Create the base of a gridfinity bin, or use it for a custom object.
+ * @brief Create the base of an openGrid bin, or use it for a custom object.
  * @param grid_size Number of bases in each dimension. [x, y]
- * @param grid_dimensions [length, width] of a single Gridfinity base.
- * @param thumbscrew Enable "gridfinity-refined" thumbscrew hole in the center of each base unit. This is a ISO Metric Profile, 15.0mm size, M15x1.5 designation.
+ * @param grid_dimensions [length, width] of a single openGrid base.
+ * @param thumbscrew Enable thumbscrew hole in the center of each base unit. This is a ISO Metric Profile, 15.0mm size, M15x1.5 designation.
  */
-module gridfinityBase(grid_size, grid_dimensions=GRID_DIMENSIONS_MM, hole_options=bundle_hole_options(), only_corners=false, thumbscrew=false) {
+module openGridBase(grid_size, grid_dimensions=GRID_DIMENSIONS_MM, hole_options=bundle_hole_options(), only_corners=false, thumbscrew=false) {
     assert(is_list(grid_dimensions) && len(grid_dimensions) == 2 &&
         grid_dimensions.x > 0 && grid_dimensions.y > 0);
     assert(is_list(grid_size) && len(grid_size) == 2 &&
@@ -67,15 +67,15 @@ module gridfinityBase(grid_size, grid_dimensions=GRID_DIMENSIONS_MM, hole_option
 }
 
 /**
- * @brief Create the base of a gridfinity bin, or use it for a custom object.
+ * @brief Create the base of an openGrid bin, or use it for a custom object.
  * @param grid_size Size in number of bases. [x, y]
- * @param grid_dimensions [length, width] of a single Gridfinity base.
+ * @param grid_dimensions [length, width] of a single openGrid base.
  * @param wall_thickness How thick the walls, and holes (if enabled) are.
  * @param bottom_thickness Height of the solid bottom.
  * @param hole_options @see block_base_hole.hole_options
  * @param only_corners Only put holes on each corner.
  */
-module gridfinity_base_lite(grid_size, grid_dimensions=GRID_DIMENSIONS_MM, wall_thickness, bottom_thickness, hole_options=bundle_hole_options(), only_corners = false) {
+module opengrid_base_lite(grid_size, grid_dimensions=GRID_DIMENSIONS_MM, wall_thickness, bottom_thickness, hole_options=bundle_hole_options(), only_corners = false) {
     assert(is_list(grid_size) && len(grid_size) == 2 && grid_size.x > 0 && grid_size.y > 0);
     assert(is_num(wall_thickness) && wall_thickness > 0);
     assert(is_num(bottom_thickness)

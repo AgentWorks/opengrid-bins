@@ -7,9 +7,9 @@ https://github.com/kennetek/gridfinity-rebuilt-openscad
 */
 
 include <src/core/standard.scad>
-include <src/core/gridfinity-baseplate.scad>
-use <src/core/gridfinity-rebuilt-utility.scad>
-use <src/core/gridfinity-rebuilt-holes.scad>
+include <src/core/opengrid-baseplate.scad>
+use <src/core/opengrid-rebuilt-utility.scad>
+use <src/core/opengrid-rebuilt-holes.scad>
 use <src/helpers/generic-helpers.scad>
 use <src/helpers/grid.scad>
 
@@ -70,16 +70,16 @@ hole_options = bundle_hole_options(refined_hole=false, magnet_hole=enable_magnet
 // ===== IMPLEMENTATION ===== //
 
 color("tomato")
-gridfinityBaseplate([gridx, gridy], l_grid, [distancex, distancey], style_plate, hole_options, style_hole, [fitx, fity]);
+openGridBaseplate([gridx, gridy], l_grid, [distancex, distancey], style_plate, hole_options, style_hole, [fitx, fity]);
 
 // ===== CONSTRUCTION ===== //
 
 /**
  * @brief Create a baseplate.
- * @param grid_size_bases Number of Gridfinity bases.
+ * @param grid_size_bases Number of openGrid bases.
  *        2d Vector. [x, y].
  *        Set to [0, 0] to auto calculate using min_size_mm.
- * @param length X,Y size of a single Gridfinity base.
+ * @param length X,Y size of a single openGrid base.
  * @param min_size_mm Minimum size of the baseplate. [x, y]
  *                    Extra space is filled with solid material.
  *                    Enables "Fit to Drawer."
@@ -88,7 +88,7 @@ gridfinityBaseplate([gridx, gridy], l_grid, [distancex, distancey], style_plate,
  * @param sh Style of screw hole allowing the baseplate to be mounted to something.
  * @param fit_offset Determines where padding is added.
  */
-module gridfinityBaseplate(grid_size_bases, length, min_size_mm, sp, hole_options, sh, fit_offset = [0, 0]) {
+module openGridBaseplate(grid_size_bases, length, min_size_mm, sp, hole_options, sh, fit_offset = [0, 0]) {
 
     assert(is_list(grid_size_bases) && len(grid_size_bases) == 2,
         "grid_size_bases must be a 2d list");

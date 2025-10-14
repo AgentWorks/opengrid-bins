@@ -1,12 +1,10 @@
-# Gridfinity Rebuilt in OpenSCAD
+# openGrid Rebuilt in OpenSCAD
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A ground-up port (with a few extra features) of the stock [gridfinity](https://www.youtube.com/watch?v=ra_9zU-mnl8) bins in OpenSCAD. Open to feedback, because I could not feasibly test all combinations of bins. I tried my best to exactly match the original gridfinity dimensions, but some of the geometry is slightly incorrect (mainly fillets). However, I think they are negligible differences, and will not appear in the printed model.
+An OpenSCAD implementation of the [openGrid](https://www.opengrid.world/) modular storage system. Based on the gridfinity-rebuilt-openscad project, this version is adapted for the 28mm openGrid specification.
 
-Full documentation can be found at the project's [website](https://kennetek.github.io/gridfinity-rebuilt-openscad/).
-
-The project can also be found on [Printables](https://www.printables.com/model/274917-gridfinity-rebuilt-in-openscad) if you want to support the project.
+openGrid is built around a 28mm grid size, providing a flexible wall and desk mounting framework with modular storage capabilities. This implementation maintains compatibility with the openGrid ecosystem while offering parametric customization through OpenSCAD.
 
 [<img src="./images/base_dimension.gif" width="320">]()
 [<img src="./images/compartment_dimension.gif" width="320">]()
@@ -45,9 +43,13 @@ For best results, use a [development snapshots](https://openscad.org/downloads.h
 
 [<img src="./images/spin.gif" width="160">]()
 
-[Gridfinity](https://www.youtube.com/watch?v=ra_9zU-mnl8) by [Zack Freedman](https://www.youtube.com/c/ZackFreedman/about)
+## Acknowledgments
 
-This work is licensed under the same license as Gridfinity, being a
+This project is based on [gridfinity-rebuilt-openscad](https://github.com/kennetek/gridfinity-rebuilt-openscad) and adapted for the [openGrid](https://www.opengrid.world/) specification (28mm grid).
+
+Original Gridfinity concept by [Zack Freedman](https://www.youtube.com/c/ZackFreedman/about).
+
+This work is licensed under the
 [MIT License](https://opensource.org/licenses/MIT).
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)

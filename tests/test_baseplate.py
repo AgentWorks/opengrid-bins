@@ -1,5 +1,5 @@
 """
-Tests for gridfinity-rebuilt-baseplate.scad
+Tests for opengrid-rebuilt-baseplate.scad
 @Copyright Arthur Moore 2024 MIT License
 """
 
@@ -10,13 +10,13 @@ from openscad_runner import *
 
 @pytest.fixture(scope="class")
 def default_parameters(pytestconfig):
-    parameter_file_path = pytestconfig.rootpath.joinpath("tests/gridfinity-rebuilt-baseplate.json")
+    parameter_file_path = pytestconfig.rootpath.joinpath("tests/opengrid-rebuilt-baseplate.json")
     parameter_file_data = ParameterFile.from_json(parameter_file_path.read_text())
     return parameter_file_data.parameterSets["Default"]
 
 @pytest.fixture
 def openscad_runner(pytestconfig, default_parameters) -> OpenScadRunner:
-    scad_path = pytestconfig.rootpath.joinpath('gridfinity-rebuilt-baseplate.scad')
+    scad_path = pytestconfig.rootpath.joinpath('opengrid-rebuilt-baseplate.scad')
     scad_runner = OpenScadRunner(scad_path)
     scad_runner.image_folder_base = pytestconfig.rootpath.joinpath('images/baseplate/')
     scad_runner.parameters = default_parameters.copy()
@@ -25,7 +25,7 @@ def openscad_runner(pytestconfig, default_parameters) -> OpenScadRunner:
 
 class TestBasePlateHoles:
     """
-    Test creating a single base in "gridfinity-spiral-vase.scad"
+    Test creating a single base in "opengrid-spiral-vase.scad"
 
     Currently only makes sure code runs, and outputs pictures for manual verification.
     """

@@ -1,4 +1,4 @@
-site_name: Gridfinity Rebuilt
+site_name: openGrid Rebuilt
 theme: readthedocs
 nav:
     - Home: index.md

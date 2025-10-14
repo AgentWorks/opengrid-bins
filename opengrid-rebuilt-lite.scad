@@ -7,8 +7,8 @@ https://github.com/kennetek/gridfinity-rebuilt-openscad
 */
 
 include <src/core/standard.scad>
-use <src/core/gridfinity-rebuilt-utility.scad>
-use <src/core/gridfinity-rebuilt-holes.scad>
+use <src/core/opengrid-rebuilt-utility.scad>
+use <src/core/opengrid-rebuilt-holes.scad>
 use <src/core/bin.scad>
 use <src/core/cutouts.scad>
 

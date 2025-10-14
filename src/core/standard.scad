@@ -10,9 +10,9 @@ r_f2 = 2.8;
 d_div = 1.2;
 
 /**
- * @brief Size of a single gridfinity unit. [Length, Width] In millimeters.
+ * @brief Size of a single openGrid unit. [Length, Width] In millimeters.
  */
-GRID_DIMENSIONS_MM = [42, 42];
+GRID_DIMENSIONS_MM = [28, 28];
 
 // Tollerance to make sure cuts don't leave a sliver behind,
 // and that items are properly connected to each other.
@@ -31,7 +31,7 @@ MAGNET_HOLE_DEPTH = MAGNET_HEIGHT + (LAYER_HEIGHT * 2);
 // distance of hole from side of bin
 d_hole_from_side=8;
 
-// Based on https://gridfinity.xyz/specification/
+// Based on openGrid specifications
 HOLE_DISTANCE_FROM_BOTTOM_EDGE = 4.8;
 
 // Meassured diameter in Fusion360.
@@ -65,7 +65,7 @@ BASEPLATE_SCREW_COUNTERBORE_HEIGHT = 3;
 /**
  * @brief Maximum width of a tab.
  */
-TAB_WIDTH_NOMINAL = 42;
+TAB_WIDTH_NOMINAL = 28;
 
  /**
  * @brief How deep the tab protrudes into the bin.
@@ -101,7 +101,7 @@ TAB_SIZE = TAB_POLYGON[2];
 
 // ****************************************
 // Stacking Lip Constants
-// Based on https://gridfinity.xyz/specification/
+// Based on openGrid specifications
 // Also includes a support base.
 // ****************************************
 
@@ -165,11 +165,11 @@ STACKING_LIP = concat(STACKING_LIP_LINE, [
 
 // ****************************************
 // Base constants
-// Based on https://gridfinity.xyz/specification/
+// Based on openGrid specifications
 // ****************************************
 
 /**
- * @Summary Profile of a Gridfinity base as described in the spec.
+ * @Summary Profile of an openGrid base as described in the spec.
  * @Details This is just a line, and will not create a solid polygon.
  */
 BASE_PROFILE = [
@@ -191,10 +191,10 @@ BASE_TOP_RADIUS = 7.5 / 2;
 
 /**
  * @Summary Size of the top of the base. [Length, Width]
- * @Details Each unit's base is 41.5mm x 41.5mm
- *          Leaving 0.5mm gap with an l_grid of 42
+ * @Details Each unit's base is 27.5mm x 27.5mm
+ *          Leaving 0.5mm gap with an l_grid of 28
  */
-BASE_TOP_DIMENSIONS = [41.5, 41.5];
+BASE_TOP_DIMENSIONS = [27.5, 27.5];
 
 /**
  * @Summary How much overhang is expected by the standard per base.
@@ -240,8 +240,7 @@ function base_bottom_dimensions(top_dimensions = BASE_TOP_DIMENSIONS) =
     - 2*[_base_profile_max_mm.x, _base_profile_max_mm.x];
 
 // ***************
-// Gridfinity Refined Thumbscrew
-// See https://www.printables.com/model/413761-gridfinity-refined
+// openGrid Thumbscrew
 // ***************
 
 BASE_THUMBSCREW_OUTER_DIAMETER=15;
