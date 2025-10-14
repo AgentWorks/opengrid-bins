@@ -24,10 +24,9 @@ customization through OpenSCAD.
 - any number of compartments (along both X and Y axis)
 - togglable scoop
 - togglable tabs, split tabs, and tab alignment
-- togglable holes (with togglable supportless printing hole structures)
+- togglable snap cutouts for openGrid attachment system
 - manual compartment construction (make the most wacky bins imaginable)
 - togglable lip (if you don't care for stackability)
-- dividing bases (if you want a 1.5 unit long bin, for instance)
 - removed material from bases to save filament
 - vase mode bins
 
@@ -37,16 +36,6 @@ This project focuses on storage bins. For generating openGrid baseplates/tiles,
 use the excellent
 [openGrid Tile Generator](https://makerworld.com/en/models/1304337-opengrid-tile-generator)
 which provides comprehensive tile customization options.
-
-### Printable Holes
-
-The printable holes allow your slicer to bridge the gap inside the countersunk
-magnet hole (using the technique shown
-[here](https://www.youtube.com/watch?v=W8FbHTcB05w)) so that supports are not
-needed.
-
-[<img src="./images/slicer_holes.png" height="200">]()
-[<img src="./images/slicer_holes_top.png" height="200">]()
 
 ## Recommendations
 
