@@ -4,6 +4,7 @@ stl/
 batch/
 site/
 /*.json
+.claude/
 
 # Test output images
 images/base_hole_options/*.png
