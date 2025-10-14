@@ -14,7 +14,7 @@
 
 include <standard.scad>
 use <base.scad>
-use <opengrid-rebuilt-holes.scad>
+use <opengrid-holes.scad>
 use <wall.scad>
 use <../helpers/grid.scad>
 use <../helpers/grid_element.scad>

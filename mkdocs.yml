@@ -1,9 +1,8 @@
-site_name: openGrid Rebuilt
+site_name: openGrid
 theme: readthedocs
 nav:
     - Home: index.md
     - Bins: bins.md
-    - Baseplates: baseplates.md
     - Lite: lite.md
     - Vase: vase.md
     - Constants: constants.md

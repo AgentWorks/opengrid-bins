@@ -1,5 +1,5 @@
 """
-Tests for opengrid-rebuilt-bins.scad
+Tests for opengrid-bins.scad
 @Copyright Arthur Moore 2024 MIT License
 """
 
@@ -10,13 +10,13 @@ from openscad_runner import *
 
 @pytest.fixture(scope="class")
 def default_parameters(pytestconfig):
-    parameter_file_path = pytestconfig.rootpath.joinpath("tests/opengrid-rebuilt-bins.json")
+    parameter_file_path = pytestconfig.rootpath.joinpath("tests/opengrid-bins.json")
     parameter_file_data = ParameterFile.from_json(parameter_file_path.read_text())
     return parameter_file_data.parameterSets["Default"]
 
 @pytest.fixture
 def openscad_runner(pytestconfig, default_parameters) -> OpenScadRunner:
-    scad_path = pytestconfig.rootpath.joinpath('opengrid-rebuilt-bins.scad')
+    scad_path = pytestconfig.rootpath.joinpath('opengrid-bins.scad')
     scad_runner = OpenScadRunner(scad_path)
     scad_runner.image_folder_base = pytestconfig.rootpath.joinpath('images/base_hole_options/')
     scad_runner.parameters = default_parameters.copy()

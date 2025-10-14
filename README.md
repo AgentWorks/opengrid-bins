@@ -1,8 +1,8 @@
-# openGrid Rebuilt in OpenSCAD
+# openGrid in OpenSCAD
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-An OpenSCAD implementation of the [openGrid](https://www.opengrid.world/) modular storage system. Based on the gridfinity-rebuilt-openscad project, this version is adapted for the 28mm openGrid specification.
+An OpenSCAD implementation of the [openGrid](https://www.opengrid.world/) modular storage system.
 
 openGrid is built around a 28mm grid size, providing a flexible wall and desk mounting framework with modular storage capabilities. This implementation maintains compatibility with the openGrid ecosystem while offering parametric customization through OpenSCAD.
 
@@ -45,7 +45,7 @@ For best results, use a [development snapshots](https://openscad.org/downloads.h
 
 ## Acknowledgments
 
-This project is based on [gridfinity-rebuilt-openscad](https://github.com/kennetek/gridfinity-rebuilt-openscad) and adapted for the [openGrid](https://www.opengrid.world/) specification (28mm grid).
+This project is based on [gridfinity-openscad](https://github.com/kennetek/gridfinity-rebuilt-openscad) and adapted for the [openGrid](https://www.opengrid.world/) specification (28mm grid).
 
 Original Gridfinity concept by [Zack Freedman](https://www.youtube.com/c/ZackFreedman/about).
 

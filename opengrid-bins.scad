@@ -3,7 +3,7 @@
  IMPORTANT: rendering will be better in development builds and not the official release of OpenSCAD, but it makes rendering only take a couple seconds, even for comically large bins.
  the magnet holes can have an extra cut in them to make it easier to print without supports
  tabs will automatically be disabled when gridz is less than 3, as the tabs take up too much space
- base functions can be found in "gridfinity-rebuilt-utility.scad"
+ base functions can be found in "opengrid-utility.scad"
  comments like ' //.5' after variables are intentional and used by the customizer
  examples at end of file
 
@@ -20,12 +20,12 @@
  Which has a height of 3.55147mm instead of the specified 4.4mm.
  This **has no impact on stacking height, and can be ignored.**
 
-https://github.com/kennetek/gridfinity-rebuilt-openscad
+https://github.com/kennetek/gridfinity-rebuilt-openscad (original Gridfinity project)
 */
 
 include <src/core/standard.scad>
-use <src/core/opengrid-rebuilt-utility.scad>
-use <src/core/opengrid-rebuilt-holes.scad>
+use <src/core/opengrid-utility.scad>
+use <src/core/opengrid-holes.scad>
 use <src/core/bin.scad>
 use <src/core/cutouts.scad>
 use <src/helpers/generic-helpers.scad>

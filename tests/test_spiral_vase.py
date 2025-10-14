@@ -1,5 +1,5 @@
 """
-Tests for opengrid-spiral-vase.scad
+Tests for opengrid-vase.scad
 @Copyright Arthur Moore 2024 MIT License
 """
 
@@ -10,13 +10,13 @@ from openscad_runner import *
 
 @pytest.fixture(scope="class")
 def default_parameters(pytestconfig):
-    parameter_file_path = pytestconfig.rootpath.joinpath("tests/opengrid-spiral-vase.json")
+    parameter_file_path = pytestconfig.rootpath.joinpath("tests/opengrid-vase.json")
     parameter_file_data = ParameterFile.from_json(parameter_file_path.read_text())
     return parameter_file_data.parameterSets["Default"]
 
 @pytest.fixture
 def openscad_runner(pytestconfig, default_parameters) -> OpenScadRunner:
-    scad_path = pytestconfig.rootpath.joinpath('opengrid-spiral-vase.scad')
+    scad_path = pytestconfig.rootpath.joinpath('opengrid-vase.scad')
     scad_runner = OpenScadRunner(scad_path)
     scad_runner.image_folder_base = pytestconfig.rootpath.joinpath('images/spiral_vase_base/')
     scad_runner.parameters = default_parameters.copy()
@@ -25,7 +25,7 @@ def openscad_runner(pytestconfig, default_parameters) -> OpenScadRunner:
 
 class TestSpiralVaseBase:
     """
-    Test creating a single base in "opengrid-spiral-vase.scad"
+    Test creating a single base in "opengrid-vase.scad"
 
     Currently only makes sure code runs, and outputs pictures for manual verification.
     """

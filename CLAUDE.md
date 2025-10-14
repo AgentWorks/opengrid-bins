@@ -56,3 +56,10 @@ feat!: change GRID_DIMENSIONS_MM from 42mm to 28mm
 BREAKING CHANGE: All existing models will need to be regenerated
 with the new 28mm grid size to match openGrid specification.
 ```
+
+### Important Notes
+
+**Do not add AI attribution to commit messages.** Commit messages should be
+clean and professional without footers like "Generated with Claude Code" or
+"Co-Authored-By: Claude". The commit message should focus solely on describing
+the changes made.

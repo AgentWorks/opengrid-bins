@@ -2,13 +2,13 @@
 /*
  IMPORTANT: rendering will be better in development builds and not the official release of OpenSCAD, but it makes rendering only take a couple seconds, even for comically large bins.
 
-https://github.com/kennetek/gridfinity-rebuilt-openscad
+https://github.com/kennetek/gridfinity-rebuilt-openscad (original Gridfinity project)
 
 */
 
 include <src/core/standard.scad>
-use <src/core/opengrid-rebuilt-utility.scad>
-use <src/core/opengrid-rebuilt-holes.scad>
+use <src/core/opengrid-utility.scad>
+use <src/core/opengrid-holes.scad>
 use <src/core/bin.scad>
 use <src/core/cutouts.scad>
 
