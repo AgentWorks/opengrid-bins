@@ -30,18 +30,18 @@ class TestSpiralVaseBase:
     Currently only makes sure code runs, and outputs pictures for manual verification.
     """
 
-    def test_no_holes(self, openscad_runner):
+    def test_no_cutouts(self, openscad_runner):
         vars = openscad_runner.parameters
         vars["type"] = 1 # Create a Base
         vars["enable_holes"] = False
-        openscad_runner.create_image([], Path('no_holes_bottom.png'))
+        openscad_runner.create_image([], Path('no_cutouts_bottom.png'))
         openscad_runner.camera_arguments = openscad_runner.camera_arguments.with_rotation(CameraRotations.Top)
-        openscad_runner.create_image([], Path('no_holes_top.png'))
+        openscad_runner.create_image([], Path('no_cutouts_top.png'))
 
-    def test_holes(self, openscad_runner):
+    def test_with_cutouts(self, openscad_runner):
         vars = openscad_runner.parameters
         vars["type"] = 1 # Create a Base
         vars["enable_holes"] = True
-        openscad_runner.create_image([], Path('with_holes_bottom.png'))
+        openscad_runner.create_image([], Path('with_cutouts_bottom.png'))
         openscad_runner.camera_arguments = openscad_runner.camera_arguments.with_rotation(CameraRotations.Top)
-        openscad_runner.create_image([], Path('with_holes_top.png'))
+        openscad_runner.create_image([], Path('with_cutouts_top.png'))

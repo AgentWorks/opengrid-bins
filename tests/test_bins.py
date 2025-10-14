@@ -42,10 +42,10 @@ class TestBinSnaps:
         openscad_runner.parameters = self.default_parameters.copy()
         openscad_runner.camera_arguments = CameraArguments(Vec3(0,0,0), CameraRotations.AngledBottom, 150)
 
-    def test_no_holes(self, openscad_runner):
+    def test_no_snaps(self, openscad_runner):
         vars = openscad_runner.parameters
         vars["snap_cutouts"] = False
-        openscad_runner.create_image([], Path('no_holes.png'))
+        openscad_runner.create_image([], Path('no_snaps.png'))
 
     def test_only_corner_snaps(self, openscad_runner):
         vars = openscad_runner.parameters
