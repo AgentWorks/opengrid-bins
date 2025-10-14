@@ -47,11 +47,11 @@ class TestBinHoles:
         vars["snap_cutouts"] = False
         openscad_runner.create_image([], Path('no_holes.png'))
 
-    def test_only_corner_holes(self, openscad_runner):
+    def test_only_corner_snaps(self, openscad_runner):
         vars = openscad_runner.parameters
         vars["snap_cutouts"] = True
         vars["only_corners"] = True
-        openscad_runner.create_image([], Path('only_corner_holes.png'))
+        openscad_runner.create_image([], Path('only_corner_snaps.png'))
 
     def test_snap_cutouts(self, openscad_runner):
         vars = openscad_runner.parameters
