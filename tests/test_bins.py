@@ -45,115 +45,49 @@ class TestBinHoles:
     def test_no_holes(self, openscad_runner):
         vars = openscad_runner.parameters
         vars["snap_cutouts"] = False
-        vars["snap_cutouts"] = False
-        vars["snap_cutouts"] = False
         openscad_runner.create_image([], Path('no_holes.png'))
 
     def test_only_corner_holes(self, openscad_runner):
         vars = openscad_runner.parameters
         vars["snap_cutouts"] = True
-        vars["snap_cutouts"] = False
-        vars["snap_cutouts"] = False
         vars["only_corners"] = True
         openscad_runner.create_image([], Path('only_corner_holes.png'))
 
     def test_snap_cutouts(self, openscad_runner):
         vars = openscad_runner.parameters
         vars["snap_cutouts"] = True
-        vars["snap_cutouts"] = False
-        vars["snap_cutouts"] = False
         openscad_runner.create_image([], Path('snap_cutouts.png'))
 
-    def test_refined_and_snap_cutouts(self, openscad_runner):
+    def test_snap_cutouts_no_chamfer(self, openscad_runner):
         vars = openscad_runner.parameters
         vars["snap_cutouts"] = True
-        vars["snap_cutouts"] = False
-        vars["snap_cutouts"] = True
         vars["chamfer_snaps"] = False
-        openscad_runner.create_image([], Path('refined_and_snap_cutouts.png'))
+        openscad_runner.create_image([], Path('snap_cutouts_no_chamfer.png'))
 
     def test_snap_cutouts_plain(self, openscad_runner):
         vars = openscad_runner.parameters
-        vars["snap_cutouts"] = False
-        vars["snap_cutouts"] = False
         vars["snap_cutouts"] = True
-        vars["chamfer_snaps"] = False
-        openscad_runner.create_image([], Path('snap_cutouts_plain.png'))
-
-    def test_snap_cutouts_printable(self, openscad_runner):
-        vars = openscad_runner.parameters
-        vars["snap_cutouts"] = False
-        vars["snap_cutouts"] = False
-        vars["snap_cutouts"] = True
-        vars["chamfer_snaps"] = True
-        openscad_runner.create_image([], Path('snap_cutouts_printable.png'))
-
-    def test_snap_cutouts_plain(self, openscad_runner):
-        vars = openscad_runner.parameters
-        vars["snap_cutouts"] = False
-        vars["snap_cutouts"] = True
-        vars["snap_cutouts"] = False
-        vars["chamfer_snaps"] = False
-        vars["chamfer_snaps"] = False
         vars["chamfer_snaps"] = False
         openscad_runner.create_image([], Path('snap_cutouts_plain.png'))
 
     def test_snap_cutouts_chamfered(self, openscad_runner):
         vars = openscad_runner.parameters
-        vars["snap_cutouts"] = False
         vars["snap_cutouts"] = True
-        vars["snap_cutouts"] = False
-        vars["chamfer_snaps"] = False
         vars["chamfer_snaps"] = True
-        vars["chamfer_snaps"] = False
         openscad_runner.create_image([], Path('snap_cutouts_chamfered.png'))
 
-    def test_snap_cutouts_printable(self, openscad_runner):
+    def test_snap_cutouts_2x2_no_chamfer(self, openscad_runner):
         vars = openscad_runner.parameters
-        vars["snap_cutouts"] = False
+        vars["gridx"] = 2
+        vars["gridy"] = 2
         vars["snap_cutouts"] = True
-        vars["snap_cutouts"] = False
         vars["chamfer_snaps"] = False
-        vars["chamfer_snaps"] = False
-        vars["chamfer_snaps"] = True
-        openscad_runner.create_image([], Path('snap_cutouts_printable.png'))
+        openscad_runner.create_image([], Path('snap_cutouts_2x2_no_chamfer.png'))
 
-    def test_snap_cutouts_with_chamfer_snaps(self, openscad_runner):
+    def test_snap_cutouts_2x2_chamfered(self, openscad_runner):
         vars = openscad_runner.parameters
-        vars["snap_cutouts"] = False
-        vars["snap_cutouts"] = True
-        vars["snap_cutouts"] = False
-        vars["chamfer_snaps"] = True
-        vars["chamfer_snaps"] = False
-        vars["chamfer_snaps"] = False
-        openscad_runner.create_image([], Path('snap_cutouts_with_chamfer_snaps.png'))
-
-    def test_snap_cutouts_multiple_plain(self, openscad_runner):
-        vars = openscad_runner.parameters
-        vars["snap_cutouts"] = False
-        vars["snap_cutouts"] = True
-        vars["snap_cutouts"] = True
-        vars["chamfer_snaps"] = False
-        vars["chamfer_snaps"] = False
-        vars["chamfer_snaps"] = False
-        openscad_runner.create_image([], Path('snap_cutouts_multiple_plain.png'))
-
-    def test_snap_cutouts_multiple_chamfered(self, openscad_runner):
-        vars = openscad_runner.parameters
-        vars["snap_cutouts"] = False
-        vars["snap_cutouts"] = True
-        vars["snap_cutouts"] = True
-        vars["chamfer_snaps"] = False
-        vars["chamfer_snaps"] = False
-        vars["chamfer_snaps"] = True
-        openscad_runner.create_image([], Path('snap_cutouts_multiple_chamfered.png'))
-
-    def test_snap_cutouts_multiple_all(self, openscad_runner):
-        vars = openscad_runner.parameters
-        vars["snap_cutouts"] = False
-        vars["snap_cutouts"] = True
+        vars["gridx"] = 2
+        vars["gridy"] = 2
         vars["snap_cutouts"] = True
         vars["chamfer_snaps"] = True
-        vars["chamfer_snaps"] = True
-        vars["chamfer_snaps"] = True
-        openscad_runner.create_image([], Path('snap_cutouts_multiple_all.png'))
+        openscad_runner.create_image([], Path('snap_cutouts_2x2_chamfered.png'))
