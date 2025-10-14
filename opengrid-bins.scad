@@ -101,9 +101,8 @@ bin1 = new_bin(
     height_mm = height(gridz, gridz_define, enable_zsnap),
     fill_height = height_internal,
     include_lip = include_lip,
-    hole_options = snap_options,
+    snap_options = snap_options,
     only_corners = only_corners || half_grid,
-    thumbscrew = false,
     grid_dimensions = GRID_DIMENSIONS_MM / (half_grid ? 2 : 1)
 );
 

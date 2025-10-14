@@ -68,7 +68,7 @@ binL = new_bin(
     grid_size = [gridx, gridy],
     height_mm = height(gridz, gridz_define, enable_zsnap),
     include_lip = style_lip == 0,
-    hole_options = snap_options,
+    snap_options = snap_options,
     only_corners = only_corners || half_grid,
     grid_dimensions = GRID_DIMENSIONS_MM / (half_grid ? 2 : 1),
     base_thickness = bottom_layer

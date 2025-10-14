@@ -19,7 +19,7 @@ _debug = false;
  * @param grid_size Number of bases in each dimension. [x, y]
  * @param grid_dimensions [length, width] of a single openGrid base.
  */
-module openGridBase(grid_size, grid_dimensions=GRID_DIMENSIONS_MM, hole_options=bundle_snap_options(), only_corners=false) {
+module openGridBase(grid_size, grid_dimensions=GRID_DIMENSIONS_MM, snap_options=bundle_snap_options(), only_corners=false) {
     assert(is_list(grid_dimensions) && len(grid_dimensions) == 2 &&
         grid_dimensions.x > 0 && grid_dimensions.y > 0);
     assert(is_list(grid_size) && len(grid_size) == 2 &&
@@ -44,13 +44,13 @@ module openGridBase(grid_size, grid_dimensions=GRID_DIMENSIONS_MM, hole_options=
                 base_solid(individual_base_size_mm);
             }
 
-            _base_holes(hole_options, grid_size_mm);
+            _base_holes(snap_options, grid_size_mm);
             _base_preview_fix();
         }
     }
     else {
         pattern_grid(grid_size, grid_dimensions, true, true)
-        block_base(hole_options, individual_base_size_mm);
+        block_base(snap_options, individual_base_size_mm);
     }
 }
 
@@ -58,12 +58,12 @@ module openGridBase(grid_size, grid_dimensions=GRID_DIMENSIONS_MM, hole_options=
  * @brief Create the base of an openGrid bin, or use it for a custom object.
  * @param grid_size Size in number of bases. [x, y]
  * @param grid_dimensions [length, width] of a single openGrid base.
- * @param wall_thickness How thick the walls, and holes (if enabled) are.
+ * @param wall_thickness How thick the walls, and snap cutouts (if enabled) are.
  * @param bottom_thickness Height of the solid bottom.
- * @param hole_options @see block_base_snap.snap_options
- * @param only_corners Only put holes on each corner.
+ * @param snap_options @see block_base_snap.snap_options
+ * @param only_corners Only put snap cutouts on each corner.
  */
-module opengrid_base_lite(grid_size, grid_dimensions=GRID_DIMENSIONS_MM, wall_thickness, bottom_thickness, hole_options=bundle_snap_options(), only_corners = false) {
+module opengrid_base_lite(grid_size, grid_dimensions=GRID_DIMENSIONS_MM, wall_thickness, bottom_thickness, snap_options=bundle_snap_options(), only_corners = false) {
     assert(is_list(grid_size) && len(grid_size) == 2 && grid_size.x > 0 && grid_size.y > 0);
     assert(is_num(wall_thickness) && wall_thickness > 0);
     assert(is_num(bottom_thickness)
@@ -126,10 +126,10 @@ module opengrid_base_lite(grid_size, grid_dimensions=GRID_DIMENSIONS_MM, wall_th
             union() {
                 pattern_grid(grid_size, grid_dimensions, true, true)
                 base_outer_shell(wall_thickness, profile_height, individual_base_size_mm);
-                _base_holes(hole_options, grid_size_mm, -2*wall_thickness);
+                _base_holes(snap_options, grid_size_mm, -2*wall_thickness);
             }
 
-            _base_holes(hole_options, grid_size_mm);
+            _base_holes(snap_options, grid_size_mm);
             _base_preview_fix();
         }
     }
@@ -138,9 +138,9 @@ module opengrid_base_lite(grid_size, grid_dimensions=GRID_DIMENSIONS_MM, wall_th
             difference() {
                 union() {
                     base_outer_shell(wall_thickness, profile_height, individual_base_size_mm);
-                    _base_holes(hole_options, individual_base_size_mm, -2*wall_thickness);
+                    _base_holes(snap_options, individual_base_size_mm, -2*wall_thickness);
                 }
-                _base_holes(hole_options, individual_base_size_mm);
+                _base_holes(snap_options, individual_base_size_mm);
                 _base_preview_fix();
             }
         }
@@ -239,13 +239,13 @@ module base_solid(top_dimensions=BASE_TOP_DIMENSIONS) {
 }
 
 /**
- * @brief Internal Code. Generates the 4 holes for a single base.
- * @details Need this fancy code to support refined holes and non-square bases.
+ * @brief Internal Code. Generates the 4 snap cutouts for a single base.
+ * @details Need this fancy code to support non-square bases.
  * @param top_dimensions [length, width] of a single Gridfinity base.
- * @param hole_options @see bundle_snap_options
+ * @param snap_options @see bundle_snap_options
  * @param offset @see block_base_snap.offset
  */
-module _base_holes(hole_options, top_dimensions=BASE_TOP_DIMENSIONS, offset=0) {
+module _base_holes(snap_options, top_dimensions=BASE_TOP_DIMENSIONS, offset=0) {
     hole_position = foreach_add(
         base_bottom_dimensions(top_dimensions)/2,
         -SNAP_DISTANCE_FROM_BOTTOM_EDGE
@@ -258,17 +258,17 @@ module _base_holes(hole_options, top_dimensions=BASE_TOP_DIMENSIONS, offset=0) {
         i = sign(cos(a+1));
         translate([i * hole_position.x, j * hole_position.y, 0])
         rotate([0, 0, a])
-        block_base_snap(hole_options, offset);
+        block_base_snap(snap_options, offset);
     }
 }
 
 /**
- * @brief A single Gridfinity base.  With holes (if set).
+ * @brief A single Gridfinity base.  With snap cutouts (if set).
  * @details Height is BASE_PROFILE_HEIGHT.
- * @param hole_options @see block_base_snap.snap_options
+ * @param snap_options @see block_base_snap.snap_options
  * @param top_dimensions [x, y] size of a single base.  Only set if deviating from the standard!
  */
-module block_base(hole_options, top_dimensions=BASE_TOP_DIMENSIONS) {
+module block_base(snap_options, top_dimensions=BASE_TOP_DIMENSIONS) {
     assert(is_valid_2d(top_dimensions) && is_positive(top_dimensions));
 
     base_bottom = base_bottom_dimensions(top_dimensions);
@@ -276,7 +276,7 @@ module block_base(hole_options, top_dimensions=BASE_TOP_DIMENSIONS) {
     difference() {
         base_solid(top_dimensions);
 
-        _base_holes(hole_options, top_dimensions);
+        _base_holes(snap_options, top_dimensions);
         _base_preview_fix();
     }
 }
