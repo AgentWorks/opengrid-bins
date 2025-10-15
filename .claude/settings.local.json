@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git mv:*)",
+      "Bash(find:*)",
+      "Bash(python -m pytest tests/ -v)",
+      "Bash(python3 -m pytest tests/ -v)",
+      "Bash(/usr/local/bin/pytest tests/ -v)",
+      "Bash(pytest:*)",
+      "Bash(/opt/homebrew/bin/openscad --export-format echo -o /dev/null opengrid-bins.scad)",
+      "Bash(/opt/homebrew/bin/openscad --export-format png -o /tmp/test.png -p tests/opengrid-bins.json -P Default opengrid-bins.scad)",
+      "Bash(/opt/homebrew/bin/pytest tests/test_bins.py -v)",
+      "Bash(/opt/homebrew/bin/pytest tests/ -v)",
+      "Bash(/opt/homebrew/bin/pytest tests/test_bins.py::TestBinHoles::test_only_corner_snaps -v)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

@@ -12,10 +12,10 @@ h_bot| bottom thiccness of bin
 r_fo1| outside radii 1
 r_fo2| outside radii 2
 r_fo3 | outside radii 3
-r_hole1| screw hole radius
-r_hole2| magnet hole radius
-d_hole| center-to-center distance between holes
-h_hole| magnet hole depth
+r_hole1| **Deprecated**: screw hole radius (openGrid uses snaps)
+r_hole2| **Deprecated**: magnet hole radius (openGrid uses snaps)
+d_hole| **Deprecated**: center-to-center distance between holes (openGrid uses snaps)
+h_hole| **Deprecated**: magnet hole depth (openGrid uses snaps)
 h_slit| slit depth (printer layer height)
 STACKING_LIP_FILLET_RADIUS| top edge fillet radius
 r_f2 | internal fillet radius

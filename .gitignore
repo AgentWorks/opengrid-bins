@@ -4,6 +4,13 @@ stl/
 batch/
 site/
 /*.json
+.claude/
+
+# Test output images
+images/base_snap_options/*.png
+images/snap_cutouts_examples/*.png
+images/spiral_vase_base/*.png
+images/snap_cutouts/*.png
 
 # From https://github.com/github/gitignore/blob/main/Python.gitignore
 # Byte-compiled / optimized / DLL files

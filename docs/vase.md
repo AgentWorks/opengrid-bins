@@ -14,7 +14,7 @@ All parameters are global. The customizer has descriptions for all parameters. I
 1. Change the *Printer Settings* parameters to match your slicer and printer settings.
 2. Run the `gridfinityVaseBase()` module. This will generate a single spiral-capable base. Export as an STL file. You will need to print multiple of these, so it recommended to fill a base plate with them using the "complete individual objects" option (or equivilant) in your slicer. You only need to do this step initially, and then each time your printer settings change afterwards.
 3. Change the bin parameters and run `gridfinityVase()` module to generate the main bin.
-4. Glue bases to the bottom of the bin. I recommend superglue on the corners and the top of the magnet holes.
+4. Glue bases to the bottom of the bin. I recommend superglue on the corners and the top of the snap cutouts.
 
 How your sliced files should look (cross section shown for 1x1 bin):
 
@@ -47,7 +47,7 @@ gridy | { n>0 \| n∈R } | number of bases along the y-axis
 gridz | { n>0 \| n∈R } | bin height. See bin height information and <br> "gridz_define" below.
 length | { n>0 \| n∈R } | length of one unit of the base. <br> default: 42 (The Answer to the Ultimate Question of <br>Life, the Universe, and Everything.)
 n_divx | { n>0 \| n∈Z }  | number of compartments along X
-enable_holes | boolean | toggle holes inside the base
+enable_snap_cutouts | boolean | toggle snap cutouts inside the base
 enable_zsnap | boolean | automatically snap the bin size to the nearest <br> 7mm increment. default: true
 enable_lip | boolean | if you are not stacking the bin, you can disable the <br>top lip to save space. default: true
 enable_scoop_chamfer | boolean | toggles the chamfer on bottom edge <br> for easy removal of items

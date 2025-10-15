@@ -1,9 +1,9 @@
 // ===== INFORMATION ===== //
 /*
  IMPORTANT: rendering will be better in development builds and not the official release of OpenSCAD, but it makes rendering only take a couple seconds, even for comically large bins.
- the magnet holes can have an extra cut in them to make it easier to print without supports
+ the snap cutouts can have chamfers to make it easier to insert bins
  tabs will automatically be disabled when gridz is less than 3, as the tabs take up too much space
- base functions can be found in "gridfinity-rebuilt-utility.scad"
+ base functions can be found in "opengrid-utility.scad"
  comments like ' //.5' after variables are intentional and used by the customizer
  examples at end of file
 
@@ -20,12 +20,12 @@
  Which has a height of 3.55147mm instead of the specified 4.4mm.
  This **has no impact on stacking height, and can be ignored.**
 
-https://github.com/kennetek/gridfinity-rebuilt-openscad
+https://github.com/kennetek/gridfinity-rebuilt-openscad (original Gridfinity project)
 */
 
 include <src/core/standard.scad>
-use <src/core/gridfinity-rebuilt-utility.scad>
-use <src/core/gridfinity-rebuilt-holes.scad>
+use <src/core/opengrid-utility.scad>
+use <src/core/opengrid-snaps.scad>
 use <src/core/bin.scad>
 use <src/core/cutouts.scad>
 use <src/helpers/generic-helpers.scad>
@@ -46,9 +46,6 @@ gridx = 3;
 gridy = 2;
 // bin height. See bin height information and "gridz_define" below.
 gridz = 6; //.1
-
-// Half grid sized bins.  Implies "only corners".
-half_grid = false;
 
 /* [Height] */
 // How "gridz" is used to calculate height.  Some exclude 7mm/1U base, others exclude ~3.5mm (4.4mm nominal) stacking lip.
@@ -73,7 +70,7 @@ depth = 0;  //.1
 cut_cylinders = false;
 // diameter of cylindrical cut outs
 cd = 10; // .1
-// chamfer around the top rim of the holes
+// chamfer around the top rim of the cylindrical cuts
 c_chamfer = 0.5; // .1
 
 /* [Compartment Features] */
@@ -84,25 +81,15 @@ place_tab = 0; // [0:Everywhere-Normal,1:Top-Left Division]
 // scoop weight percentage. 0 disables scoop, 1 is regular scoop. Any real number will scale the scoop.
 scoop = 1; //[0:0.1:1]
 
-/* [Base Hole Options] */
-// only cut magnet/screw holes at the corners of the bin to save uneccesary print time
+/* [Base Snap Options] */
+// only cut snap cutouts at the corners of the bin to save unnecessary print time
 only_corners = false;
-//Use gridfinity refined hole style. Not compatible with magnet_holes!
-refined_holes = true;
-// Base will have holes for 6mm Diameter x 2mm high magnets.
-magnet_holes = false;
-// Base will have holes for M3 screws.
-screw_holes = false;
-// Magnet holes will have crush ribs to hold the magnet.
-crush_ribs = true;
-// Magnet/Screw holes will have a chamfer to ease insertion.
-chamfer_holes = true;
-// Magnet/Screw holes will be printed so supports are not needed.
-printable_hole_top = true;
-// Enable "gridfinity-refined" thumbscrew hole in the center of each base: https://www.printables.com/model/413761-gridfinity-refined
-enable_thumbscrew = false;
+// Base will have rectangular cutouts for openGrid snap attachment
+snap_cutouts = false;
+// Snap cutouts will have a chamfer to ease insertion
+chamfer_snaps = true;
 
-hole_options = bundle_hole_options(refined_holes, magnet_holes, screw_holes, crush_ribs, chamfer_holes, printable_hole_top);
+snap_options = bundle_snap_options(snap_cutouts, chamfer_snaps);
 
 // ===== IMPLEMENTATION ===== //
 
@@ -111,10 +98,8 @@ bin1 = new_bin(
     height_mm = height(gridz, gridz_define, enable_zsnap),
     fill_height = height_internal,
     include_lip = include_lip,
-    hole_options = hole_options,
-    only_corners = only_corners || half_grid,
-    thumbscrew = enable_thumbscrew,
-    grid_dimensions = GRID_DIMENSIONS_MM / (half_grid ? 2 : 1)
+    snap_options = snap_options,
+    only_corners = only_corners
 );
 
 echo(str(
@@ -237,7 +222,7 @@ bin_render(bin_33) {
     compartment_cutter(cgs([1, 2]), center_top=false);
 }
 
-// A pattern of three cylinderical holes.
+// A pattern of three cylindrical cuts.
 translate([0, -150, 0])
 bin_render(bin_33) {
     depth = bin_get_infill_size_mm(bin_33).z;

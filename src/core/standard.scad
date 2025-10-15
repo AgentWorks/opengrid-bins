@@ -10,52 +10,44 @@ r_f2 = 2.8;
 d_div = 1.2;
 
 /**
- * @brief Size of a single gridfinity unit. [Length, Width] In millimeters.
+ * @brief Size of a single openGrid unit. [Length, Width] In millimeters.
  */
-GRID_DIMENSIONS_MM = [42, 42];
+GRID_DIMENSIONS_MM = [28, 28];
 
 // Tollerance to make sure cuts don't leave a sliver behind,
 // and that items are properly connected to each other.
 TOLLERANCE = 0.02;
 
 // ****************************************
-// Magnet / Screw Hole Constants
+// openGrid Snap Constants
+// Based on openGrid specifications
 // ****************************************
 LAYER_HEIGHT = 0.2;
-MAGNET_HEIGHT = 2;
 
-SCREW_HOLE_RADIUS = 3 / 2;
-MAGNET_HOLE_RADIUS = 6.5 / 2;
-MAGNET_HOLE_DEPTH = MAGNET_HEIGHT + (LAYER_HEIGHT * 2);
+// openGrid board dimensions
+BOARD_THICKNESS_FULL = 6.8;
+BOARD_THICKNESS_LITE = 4.0;
 
-// distance of hole from side of bin
-d_hole_from_side=8;
+// Snap dimensions
+SNAP_THICKNESS_FULL = 6.8;
+SNAP_THICKNESS_LITE = 3.4;
+SNAP_WIDTH = 10;  // Approximate snap width
+SNAP_LENGTH = 15; // Approximate snap length
 
-// Based on https://gridfinity.xyz/specification/
-HOLE_DISTANCE_FROM_BOTTOM_EDGE = 4.8;
+// Distance of snap from side of bin
+d_snap_from_side = 8;
 
-// Meassured diameter in Fusion360.
-// Smaller than the magnet to keep it squeezed.
-REFINED_HOLE_RADIUS = 5.86 / 2;
-REFINED_HOLE_HEIGHT = MAGNET_HEIGHT - 0.1;
-// How many layers are between a Gridfinity Refined Hole and the bottom
-REFINED_HOLE_BOTTOM_LAYERS = 2;
+// Distance from bottom edge (aligned with grid)
+SNAP_DISTANCE_FROM_BOTTOM_EDGE = 4.8;
 
-// Experimentally chosen for a press fit.
-MAGNET_HOLE_CRUSH_RIB_INNER_RADIUS = 5.9 / 2;
-// Mostly arbitrarily chosen.
-// 30 ribs does not print with a 0.4mm nozzle.
-// Anything 5 or under produces a hole that is not round.
-MAGNET_HOLE_CRUSH_RIB_COUNT = 8;
+// Snap hole dimensions for base
+SNAP_HOLE_WIDTH = 10.5;   // Slightly larger than snap for clearance
+SNAP_HOLE_LENGTH = 15.5;  // Slightly larger than snap for clearance
+SNAP_HOLE_DEPTH = 7.0;    // Depth to accommodate snap
 
-// Radius to add when chamfering magnet and screw holes.
-CHAMFER_ADDITIONAL_RADIUS = 0.8;
+// Chamfer settings for snap holes
+CHAMFER_ADDITIONAL_SIZE = 0.8;
 CHAMFER_ANGLE = 45;
-
-// When countersinking the baseplate, how much to add to the screw radius.
-BASEPLATE_SCREW_COUNTERSINK_ADDITIONAL_RADIUS = 5/2;
-BASEPLATE_SCREW_COUNTERBORE_RADIUS = 5.5/2;
-BASEPLATE_SCREW_COUNTERBORE_HEIGHT = 3;
 
 // ****************************************
 // Tab Constants
@@ -65,7 +57,7 @@ BASEPLATE_SCREW_COUNTERBORE_HEIGHT = 3;
 /**
  * @brief Maximum width of a tab.
  */
-TAB_WIDTH_NOMINAL = 42;
+TAB_WIDTH_NOMINAL = 28;
 
  /**
  * @brief How deep the tab protrudes into the bin.
@@ -101,7 +93,7 @@ TAB_SIZE = TAB_POLYGON[2];
 
 // ****************************************
 // Stacking Lip Constants
-// Based on https://gridfinity.xyz/specification/
+// Based on openGrid specifications
 // Also includes a support base.
 // ****************************************
 
@@ -165,11 +157,11 @@ STACKING_LIP = concat(STACKING_LIP_LINE, [
 
 // ****************************************
 // Base constants
-// Based on https://gridfinity.xyz/specification/
+// Based on openGrid specifications
 // ****************************************
 
 /**
- * @Summary Profile of a Gridfinity base as described in the spec.
+ * @Summary Profile of an openGrid base as described in the spec.
  * @Details This is just a line, and will not create a solid polygon.
  */
 BASE_PROFILE = [
@@ -191,10 +183,10 @@ BASE_TOP_RADIUS = 7.5 / 2;
 
 /**
  * @Summary Size of the top of the base. [Length, Width]
- * @Details Each unit's base is 41.5mm x 41.5mm
- *          Leaving 0.5mm gap with an l_grid of 42
+ * @Details Each unit's base is 27.5mm x 27.5mm
+ *          Leaving 0.5mm gap with an l_grid of 28
  */
-BASE_TOP_DIMENSIONS = [41.5, 41.5];
+BASE_TOP_DIMENSIONS = [27.5, 27.5];
 
 /**
  * @Summary How much overhang is expected by the standard per base.
@@ -238,15 +230,6 @@ function base_bottom_dimensions(top_dimensions = BASE_TOP_DIMENSIONS) =
         && is_num(top_dimensions.x) && is_num(top_dimensions.y))
     top_dimensions
     - 2*[_base_profile_max_mm.x, _base_profile_max_mm.x];
-
-// ***************
-// Gridfinity Refined Thumbscrew
-// See https://www.printables.com/model/413761-gridfinity-refined
-// ***************
-
-BASE_THUMBSCREW_OUTER_DIAMETER=15;
-BASE_THUMBSCREW_PITCH=1.5;
-
 
 // ****************************************
 // Weighted Baseplate

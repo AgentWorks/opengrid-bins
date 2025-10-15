@@ -1,0 +1,97 @@
+# Claude Code Development Guide
+
+This document provides guidance for AI assistants (like Claude) working on this
+project.
+
+## Development Guidelines
+
+### Commit Message Format
+
+This project uses **Conventional Commits** specification. All commits must
+follow this format:
+
+```
+<type>[optional scope]: <description>
+
+[optional body]
+
+[optional footer(s)]
+```
+
+#### Types
+
+- `feat`: A new feature
+- `fix`: A bug fix
+- `docs`: Documentation only changes
+- `style`: Changes that don't affect code meaning (formatting, whitespace)
+- `refactor`: Code change that neither fixes a bug nor adds a feature
+- `perf`: Performance improvements
+- `test`: Adding or correcting tests
+- `build`: Changes to build system or dependencies
+- `ci`: Changes to CI configuration files and scripts
+- `chore`: Other changes that don't modify src or test files
+
+#### Examples
+
+```
+feat(bins): add support for half-grid sized bins
+
+fix(baseplate): correct hole positioning for 28mm grid
+
+docs(readme): update installation instructions
+
+refactor(core): simplify grid calculation logic
+
+test(bins): add test cases for cylindrical compartments
+```
+
+#### Breaking Changes
+
+If a commit introduces breaking changes, add `!` after the type or include
+`BREAKING CHANGE:` in the footer:
+
+```
+feat!: change GRID_DIMENSIONS_MM from 42mm to 28mm
+
+BREAKING CHANGE: All existing models will need to be regenerated
+with the new 28mm grid size to match openGrid specification.
+```
+
+### Important Notes
+
+**Do not add AI attribution to commit messages.** Commit messages should be
+clean and professional without footers like "Generated with Claude Code" or
+"Co-Authored-By: Claude". The commit message should focus solely on describing
+the changes made.
+
+### Changelog Management
+
+This project follows the [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
+standard. When making significant changes:
+
+1. Update `CHANGELOG.md` with your changes under the `[Unreleased]` section
+2. Use the following categories:
+   - `Added` for new features
+   - `Changed` for changes in existing functionality
+   - `Deprecated` for soon-to-be removed features
+   - `Removed` for now removed features
+   - `Fixed` for any bug fixes
+   - `Security` for vulnerability fixes
+
+Example changelog entry:
+
+```markdown
+## [Unreleased]
+
+### Added
+- New cylindrical compartment cutter function
+
+### Changed
+- Grid dimensions from 42mm to 28mm for openGrid compatibility
+
+### Removed
+- Baseplate generator (use external tile generator instead)
+```
+
+The changelog provides a human-readable summary of changes between versions,
+complementing the detailed commit history.

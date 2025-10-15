@@ -1,9 +1,8 @@
-site_name: Gridfinity Rebuilt
+site_name: openGrid Bins
 theme: readthedocs
 nav:
     - Home: index.md
     - Bins: bins.md
-    - Baseplates: baseplates.md
     - Lite: lite.md
     - Vase: vase.md
     - Constants: constants.md

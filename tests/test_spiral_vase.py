@@ -1,5 +1,5 @@
 """
-Tests for gridfinity-spiral-vase.scad
+Tests for opengrid-vase.scad
 @Copyright Arthur Moore 2024 MIT License
 """
 
@@ -10,13 +10,13 @@ from openscad_runner import *
 
 @pytest.fixture(scope="class")
 def default_parameters(pytestconfig):
-    parameter_file_path = pytestconfig.rootpath.joinpath("tests/gridfinity-spiral-vase.json")
+    parameter_file_path = pytestconfig.rootpath.joinpath("tests/opengrid-spiral-vase.json")
     parameter_file_data = ParameterFile.from_json(parameter_file_path.read_text())
     return parameter_file_data.parameterSets["Default"]
 
 @pytest.fixture
 def openscad_runner(pytestconfig, default_parameters) -> OpenScadRunner:
-    scad_path = pytestconfig.rootpath.joinpath('gridfinity-spiral-vase.scad')
+    scad_path = pytestconfig.rootpath.joinpath('opengrid-spiral-vase.scad')
     scad_runner = OpenScadRunner(scad_path)
     scad_runner.image_folder_base = pytestconfig.rootpath.joinpath('images/spiral_vase_base/')
     scad_runner.parameters = default_parameters.copy()
@@ -25,23 +25,23 @@ def openscad_runner(pytestconfig, default_parameters) -> OpenScadRunner:
 
 class TestSpiralVaseBase:
     """
-    Test creating a single base in "gridfinity-spiral-vase.scad"
+    Test creating a single base in "opengrid-vase.scad"
 
     Currently only makes sure code runs, and outputs pictures for manual verification.
     """
 
-    def test_no_holes(self, openscad_runner):
+    def test_no_cutouts(self, openscad_runner):
         vars = openscad_runner.parameters
         vars["type"] = 1 # Create a Base
-        vars["enable_holes"] = False
-        openscad_runner.create_image([], Path('no_holes_bottom.png'))
+        vars["enable_snap_cutouts"] = False
+        openscad_runner.create_image([], Path('no_cutouts_bottom.png'))
         openscad_runner.camera_arguments = openscad_runner.camera_arguments.with_rotation(CameraRotations.Top)
-        openscad_runner.create_image([], Path('no_holes_top.png'))
+        openscad_runner.create_image([], Path('no_cutouts_top.png'))
 
-    def test_holes(self, openscad_runner):
+    def test_with_cutouts(self, openscad_runner):
         vars = openscad_runner.parameters
         vars["type"] = 1 # Create a Base
-        vars["enable_holes"] = True
-        openscad_runner.create_image([], Path('with_holes_bottom.png'))
+        vars["enable_snap_cutouts"] = True
+        openscad_runner.create_image([], Path('with_cutouts_bottom.png'))
         openscad_runner.camera_arguments = openscad_runner.camera_arguments.with_rotation(CameraRotations.Top)
-        openscad_runner.create_image([], Path('with_holes_top.png'))
+        openscad_runner.create_image([], Path('with_cutouts_top.png'))

@@ -20,9 +20,7 @@ style_lip | {0, 1, 2} | if you are not stacking the bin, you can disable the top
 gridz_define | { n>0 \| n∈R } | determine what the variable "gridz" applies to based on <br> your use case. default: 0. <br>     • (0) gridz is the height in # of 7mm increments (Zack) <br>     • (1) gridz is the internal height in millimeters <br>     • (2) gridz is the overall external height of the bin in millimeters
 height_internal | { n>0 \| n∈R } | height of the internal block. <br> Can be lower than bin height to save filament on custom bins. <br> default of 0 means use the calculated height.
 style_tab | { 0, 1, 2, 3, 4, 5 } | how the tabs for labels are generated. <br>     • (0) Full tabs across the entire compartment <br>     • (1) automatic tabs <br>     - left aligned tabs on the left edge<br>     - right aligned tabs on right edge<br>     -  center tabs otherwise <br>     • (2) left aligned tabs <br>     • (3) center aligned tabs <br>     • (4) right aligned tabs <br>     • (5) no tabs
-style_hole | { 0, 1, 2, 3 } | the style of holes in the bases <br>     • (0) No holes <br>     • (1) Magnet holes only <br>     • (2) Magnet and screw holes - no printable slit <br>     • (3) Magnet and screw holes - with printable slit
-div_base_x | { n>=0 \| n∈Z } | number of divisions per 1 unit of base along the X axis. <br>(default 1, only use integers. <br>0 means automatically guess the division)
-div_base_y | { n>=0 \| n∈Z } | number of divisions per 1 unit of base along the Y axis. <br>(default 1, only use integers. <br>0 means automatically guess the division)
+style_hole | deprecated | **Deprecated**: openGrid uses snap cutouts instead of holes. See snap_cutouts parameter in opengrid-bins.scad
 
 <br>
 
@@ -79,22 +77,21 @@ height(30, 1, 0, false);
 
 ### gridfinityBase
 
-Generates the bases for bins. Has various different hole styles, and can be subdivided.
+Generates the bases for bins. **Note:** This function uses deprecated Gridfinity-style parameters.
 
-** `gridfinityBase (gridx, gridy, length, div_base_x, div_base_y, style_hole)`  **
+** `gridfinityBase (gridx, gridy, length, style_hole)`  **
 
 Parameter | Range | Description
 --- | ----- | ---
 gridx | { n>0 \| n∈R } | number of bases along the x-axis
 gridy | { n>0 \| n∈R } | number of bases along the y-axis
 length | { n>0 \| n∈R } | length of one unit of the base. default: 42
-div_base_x | { n>=0 \| n∈Z } | number of divisions per 1 unit of base along the X axis. <br>(default 1, only use integers. 0 means automatically guess the division)
-div_base_y | { n>=0 \| n∈Z } | number of divisions per 1 unit of base along the Y axis. <br>(default 1, only use integers. 0 means automatically guess the division)
-style_hole | { 0, 1, 2, 3 } | the style of holes in the bases <br>     • (0) No holes <br>     • (1) Magnet holes only <br>     • (2) Magnet and screw holes - no printable slit <br>     • (3) Magnet and screw holes - with printable slit
+style_hole | deprecated | **Deprecated**: openGrid uses snap cutouts instead of holes. See snap_cutouts parameter in opengrid-bins.scad
 
 ```
-// Example: generate a 3x3 base with a 42mm unit size and clean magnet holes
-gridfinityBase(3, 3, 42, 0, 0, 1);
+// Example: generate a 3x3 base with a 42mm unit size
+// Note: This legacy API is deprecated. Use opengrid-bins.scad instead.
+gridfinityBase(3, 3, 42, 0);
 ```
 
 ---
@@ -163,8 +160,8 @@ h | { n>0 \| n∈R } | Height of the area, in base units (1 unit = 1 `length`)
 
 ```
 // Example:
-// cuts a cylindrical hole of radius 5
-// hole center is located 1/2 units from the right edge of the bin, and 1 unit from the top
+// cuts a cylindrical cutout of radius 5
+// cutout center is located 1/2 units from the right edge of the bin, and 1 unit from the top
 gridfinityInit(3, 3, height(6), 0, 42) {
     cut_move(x=2, y=1, w=1, h=2) {
           cylinder(r=5, h=100, center=true);
